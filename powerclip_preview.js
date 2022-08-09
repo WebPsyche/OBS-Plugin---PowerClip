@@ -64,86 +64,21 @@ $contentBodyChildren = $contentBody.children
 let slideNumber = 1
 let slideNumberIndi = 1
 
-function createSlide(n){
-        //sub content holder
-        $subContentHolder = document.createElement('section')
-        $subContentHolder.setAttribute('data-action',`action${slideNumberIndi}`)
-        //creat delete slide button
-        $newDeleteButton = document.createElement('button')
-        $newDeleteButton.setAttribute('type','button')
-        $newDeleteButton.textContent = 'remove'
-        //slide button
-        $newSlideButton  = document.createElement('button')
-        $newSlideButton.setAttribute('type','menu')
-        $newSlideButton.classList.add('collapsible')
-        $newSlideButton.textContent = `Slide ${slideNumber}`
-        //create slide content
-        $newSlideContent = document.createElement('div')
-       // $newSlideContent.textContent = "good boy"
-        //create content
-            //bgColor icon
-        $setBgColor = document.createElement('input')
-        $setBgColor.setAttribute('type','color')
-        $setBgColor.setAttribute('value','#3C107E')
-        $setBgColor.setAttribute('oninput','addBgColor(value)')
-        $setBgColor.setAttribute('title','background color')
-            //color icon
-            $setColor = document.createElement('input')
-            $setColor.setAttribute('type','color')
-            $setColor.setAttribute('value','#8685C7')
-            $setColor.setAttribute('oninput','addColor(value)')
-            $setColor.setAttribute('title','color text')
-            //font icon
-            $setFont = document.createElement('input')
-            $setFont.setAttribute('type','number')
-            $setFont.setAttribute('value','20')
-            $setFont.setAttribute('min','5')
-            $setFont.setAttribute('oninput','fontSize(value)')
-            $setFont.setAttribute('title','tetx size')
-            //trans4rm X
-            $setX = document.createElement('input')
-            $setX.setAttribute('type','number')
-            $setX.setAttribute('value','0')
-            $setX.setAttribute('oninput','setX(value)')
-            $setX.setAttribute('title','transform X')
-            //setY
-            $setY = document.createElement('input')
-            $setY.setAttribute('type','number')
-            $setY.setAttribute('value','0')
-            $setY.setAttribute('oninput','setY(value)')
-            $setY.setAttribute('title','transform Y')
-            // text area
-          //  $textarea = document.createElement('textarea')
-          //  $textarea.setAttribute('placeholder','text')
-            
+
             //template object
-            $templateObj = document.createElement('span')
-            $templateObj.setAttribute('id', `tempObj${slideNumber}`)
-            $templateObj.setAttribute('contenteditable','true')
-            $templateObj.textContent = `template Obj ${slideNumber}`
+           // $templateObj = document.createElement('span')
+           // $templateObj.setAttribute('id', `tempObj${slideNumber}`)
+           // $templateObj.setAttribute('contenteditable','true')
+           // $templateObj.textContent = `template Obj ${slideNumber}`
 
-console.log(document.getElementById('tempObj1'))
 
-        //appending childs
-        $newSlideButton.appendChild($newDeleteButton)
-        $subContentHolder.appendChild($newSlideButton)
-        $newSlideContent.appendChild($setBgColor)
-        $newSlideContent.appendChild($setColor)
-        $newSlideContent.appendChild($setFont) 
-        $newSlideContent.appendChild($setX)
-        $newSlideContent.appendChild($setY)
-        //$newSlideContent.appendChild($textarea)
-        $subContentHolder.appendChild($newSlideContent)
-        $contentBody.appendChild($subContentHolder)
 
-        $preview.appendChild($templateObj)
 
-}
 function removeSlide(n){
     slideNumber--
     slideNumberIndi--
 }
-createSlide()
+//createSlide()
 function addSlide(){
     slideNumber++
     slideNumberIndi++
