@@ -28,18 +28,36 @@
       </script>
     </head>
     <body>
-      <div class="sdf">make your dream</div>
         <h1>PowerCLip</h1>
         <div class="preview"> 
-      
+          <div class="screen slide1">
+            
+          </div>
         </div>
         <!first slider>
 
 
         <div class="body">
           <section class="one" data-action="action1">
-            <button type="menu" class="collapsible">Slide 1
-            <button type="button">remove</button>
+            <button type="menu" class="collapsible" contenteditable="false">Slide 1
+              <span type="button">remove</span>
+            </button>
+            <div>
+              <input type="color" value="#3C107E" oninput="addBgColor(value)" title="background color">
+              <input type="color" value="#8685C7" oninput="addColor(value)" title="text color">
+              <input type="number" value="20" oninput="fontSize(value)" title="text size">
+              <input type="number" value="20" oninput="setX(value)" title="transform X">
+              <input type="number" value="20" oninput="setY(value)" title="transform Y">
+              <textarea placeholder="type your text here"></textarea>
+            </div>
+
+          </section>
+         </div>
+
+         <div class="body">
+          <section class="two" data-action="action2">
+            <button type="menu" class="collapsible" contenteditable="false">Slide 2
+              <span type="button">remove</span>
             </button>
             <div>
               <input type="color" value="#3C107E" oninput="addBgColor(value)" title="background color">
@@ -51,6 +69,7 @@
 
           </section>
          </div>
+
         <button class="slideCounnter" onclick="addSlide()">Add Slide</button>
         <button  onclick="openOther()">openOther</button>
         <button  onclick="otherFunc()">openOther</button>

@@ -166,17 +166,19 @@ fieldset:hover,:focus,
     margin-top:5px;
     transition:0.7s ease;
     border-radius:5px 5px 0 0;
+
 }
-.body button[type="button"]{
+.body span[type="button"]{
   border: none;
-  background:rgb(124, 32, 211); 
+  background:rgb(63, 19, 104); 
   cursor: pointer;
   color:rgb(243, 234, 234) ;
   transition:0.7s ease;
-  border-radius:5px 5px 0 0;
-  float:;
+  padding: 2px;
+  position: absolute;
   font-size:10px;
-  margin-left:75%;
+  right:13%;
+  display:none;
 }
 .collapsible:after{
   content: '\02795';
@@ -191,9 +193,13 @@ fieldset:hover,:focus,
   content:'\2796'
 }
 .body div{
-  background:rgb(179, 127, 127);
+  background:rgb(17, 17, 17);
   padding: 0 5px;
   max-height:0px;
   overflow: hidden;
   transition: max-height 0.2s;
+}
+.screen{
+  background:red;
+  height:100%;
 }

@@ -84,66 +84,33 @@ function addSlide(){
     slideNumberIndi++
     createSlide(slideNumber)
     ok()
-    glad()
 }
     //...deleting slides
    function ok() {
-       //$section = document.getElementById('section')
-        for(let search of $contentBody.children){
-        search.addEventListener('click', e=>{
+       $section = document.querySelectorAll('section')
+        for(let i=0;i<$section.length; i++){
+        $section[i].addEventListener('click', e=>{
         if(e.target.matches('button [type=button]')){
-            search.remove()
+            $section[i].remove()
 
         } 
     })
     }}ok()
     
-
-
-
-//$collapsible = document.querySelector("button")
+$collapsible = document.querySelectorAll(".collapsible")
 //for(i=0; i<2; i++){
-    function glad(){
-    for(let check of $contentBody.children){
-        for(let per of check.children){
-            console.log(per.firstElementChild)
-        }
-        console.log(check)
-        $collapsible = check.children[0]
-        $collapsible.addEventListener('click', ()=>{
-            $collapsible.classList.toggle("active")
-            $content = $collapsible.nextElementSibling;
+    for(let i = 0; i < $collapsible.length; i++ ){
+        $collapsible[i].addEventListener('click', ()=>{
+            $collapsible[i].classList.toggle("active")
+            $content = $collapsible[i].nextElementSibling;
             if($content.style.maxHeight){
                 $content.style.maxHeight = null
             }else{
                 $content.style.maxHeight = $content.scrollHeight + "px";
-            }
-        })
-    }
-}glad()
-//}
-//console.log($collapsible)
+            } })}
+
+   
 
 
 
-
-
-//$subContentHolder = document.querySelector('section')
-$subContentChild = $subContentHolder.children
-console.log($subContentHolder.children.length)
-
-//for (i = 0; i < $subContentChild.length; i++){
-//    console.log($subContentChild[i])
-//  $subContentChild[i].addEventListener('click', ()=>{
-//        //$subContentChild[i].classList.toggle("active");
-//        $content = $subContentChild[i].nextElementSibling;
-//        console.log($content)
-//        if($content.style.maxHeight){
-//            $content.style.maxHeight = null
-//        }else{
-//            $content.style.maxHeight = $content.scrollHeight + "px"
-//        }
-//    })
-//}
-//
 
