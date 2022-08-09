@@ -31,6 +31,8 @@
         <h1>PowerCLip</h1>
         <div class="preview"> 
           <div class="screen slide1">
+            <header contenteditable="true">header</header>
+            <p contenteditable="true">body</p>
             
           </div>
         </div>
@@ -41,18 +43,23 @@
           <section class="one" data-action="action1">
             <button type="menu" class="collapsible" contenteditable="false">Slide 1
               <label class="switch">
-                <input type="checkbox"  class="checkbox" id="1" checked oninput="activate(id)">
+                <input type="checkbox"  class="checkbox" id="1">
                 <span class="slider round">
                 </span>
                 </label>
               <span type="button">remove</span>
             </button>
             <div>
+              <fieldset id="text">
+                <figure for="text">Text</figure>
+                </fieldset>
               <input type="color" value="#3C107E" oninput="addBgColor(value)" title="background color">
               <input type="color" value="#8685C7" oninput="addColor(value)" title="text color">
               <input type="number" value="20" oninput="fontSize(value)" title="text size">
               <input type="number" value="20" oninput="setX(value)" title="transform X">
               <input type="number" value="20" oninput="setY(value)" title="transform Y">
+              <br>
+              <input type="header" value="header">
               <textarea placeholder="type your text here"></textarea>
             </div>
 

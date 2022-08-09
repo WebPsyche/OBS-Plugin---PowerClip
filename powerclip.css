@@ -77,9 +77,10 @@ fieldset:hover,:focus,
 .switch {
     position: relative;
     display: inline-block;
-    width: 40px;
-    height: 24px;
-    float: right;
+    width: 30px;
+    height: 15px;
+    float:;
+    left:80%;
 }
   
   /* Hide default HTML checkbox */
@@ -97,7 +98,7 @@ fieldset:hover,:focus,
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: rgba(180, 119, 216, 0.5);
     -webkit-transition: .4s;
     transition: .4s;
   }
@@ -105,17 +106,19 @@ fieldset:hover,:focus,
   .slider:before {
     position: absolute;
     content: "";
-    height: 24px;
-    width: 24px;
-    left: 5px;
-    bottom: px;
-    background-color: white;
+    height: 10px;
+    width: 10px;
+    left: ;
+    bottom:;
+    top:2px ;
+    background-color: rgb(93, 31, 129);
     -webkit-transition: .4s;
     transition: .4s;
   }
   
   input:checked + .slider {
-    background-color: rgb(124, 32, 211);
+    background-color: rgb(11, 7, 14);
+    left:5px;
   }
   
   input:focus + .slider {
@@ -202,4 +205,14 @@ fieldset:hover,:focus,
 .screen{
   background:red;
   height:100%;
+  display:none;
+  text-align:center;
+}
+.screen header{
+  padding-top:5px;
+  font-size:20px;
+  font-weight:bolder;
+}
+.screen p{
+    font-size:15px;
 }

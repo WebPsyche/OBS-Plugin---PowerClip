@@ -35,30 +35,45 @@ function setY (e){
     obj.style.transform = `translateY(${e}px)`;
 }
 //....switch button....
-function activate(id){
-    $checkbox = document.querySelector('.checkbox')
-    $pptCon = document.querySelector('.properties_container')
-    if($checkbox.checked === true){
-        $pptCon.classList.add('display_transition_reverse')
-        $pptCon.classList.remove('display_transition')
-
-        
-        $previewPane = document.createElement('span')
-        //$previewPane.textContent = "wertt"
-        $preview.appendChild($previewPane)
-
-        function output (e) {
-            $previewPane.textContent = e.target.value;
+$switches = document.querySelectorAll('.switch')
+$slideScreens = document.querySelectorAll('.screen')
+for(let i=0; i<$switches.length;i++){
+    $switches[i].addEventListener('click',(e)=>{
+        if(e.target.matches('input')){
+           
+            if(e.target.checked===true){
+                console.log('boom')
+                $slideScreens[i].style.display = "block"
+            }else{
+                $slideScreens[i].style.display = "none"
+            }
         }
-        $textarea.addEventListener('keyup', output)
-
-    }else{
-        $pptCon.classList.add('display_transition')
-        $pptCon.classList.remove('display_transition_reverse')
-
-        $preview.removeChild($previewPane)
-    }
+    })
 }
+//function activate(id){
+//    $checkbox = document.querySelector('.checkbox')
+//    $pptCon = document.querySelector('.properties_container')
+//    if($checkbox.checked === true){
+//        $pptCon.classList.add('display_transition_reverse')
+//        $pptCon.classList.remove('display_transition')
+//
+//        
+//        $previewPane = document.createElement('span')
+//        //$previewPane.textContent = "wertt"
+//        $preview.appendChild($previewPane)
+//
+//        function output (e) {
+//            $previewPane.textContent = e.target.value;
+//        }
+//        $textarea.addEventListener('keyup', output)
+//
+//    }else{
+//        $pptCon.classList.add('display_transition')
+//        $pptCon.classList.remove('display_transition_reverse')
+//
+//        $preview.removeChild($previewPane)
+//    }
+//}
 $contentBody = document.querySelector('.body ')
 $contentBodyChildren = $contentBody.children
 let slideNumber = 1
