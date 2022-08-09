@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+    <head>
+    <title>Power Clip</title>
+    
+    <link rel="stylesheet" href="powerclip.css">
+    <script>
+      function allowDrop(ev){
+        ev.preventDefault();
+      }
+      function drag(ev){
+        ev.dataTransfer.setData("span", ev.target.id);
+      }
+      function drop (ev){
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("span")
+        ev.target.appendChild(document.getElementById(data));
+      }
+      var otherWindow;
+      function openOther(){
+        otherWindow = window.open("sourceclip.html", "otherWindow")
+      }
+      $saul = document.querySelector('.sdf')
+      function otherFunc(){
+        otherWindow.postMessage($saul, "*")
+      }
+      //localStorage.setItem('cloe','rice and welcome')
+      </script>
+    </head>
+    <body>
+      <div class="sdf">make your dream</div>
+        <h1>PowerCLip</h1>
+        <div class="preview"> 
+      
+        </div>
+        <!first slider>
+
+        <fieldset  id="1field">
+          <label class="switch">
+            <input type="checkbox"  class="checkbox" id="1" checked oninput="activate(id)">
+            <span class="slider round">
+            </span>
+            </label>
+            <legend>Slide 1</legend>
+          <div class="properties_container">
+          <input type="checkbox" name="bgcolor "> 
+          <input type="color" value="#3C107E" oninput="addBgColor(value)" title="background color" name="bgcolor">
+          <input type="color" value="#8685C7" oninput="addColor(value)" title="text color" name="textcolor">
+          <input type="number" value="20"  min="5" oninput="fontSize(value)" title="text size" name="font-size">
+          <input type="number" value="0" title="X">
+          <input type="number" value="0" title="Y">
+          <br>
+          <textarea id="textarea" placeholder="text" ></textarea>
+          </div>
+          <div class="position_container">
+          </div>
+        </fieldset>
+
+        <div class="body">
+         
+
+          
+         
+
+    
+        </div>
+        <button class="slideCounnter" onclick="addSlide()">Add Slide</button>
+        <button  onclick="openOther()">openOther</button>
+        <button  onclick="otherFunc()">openOther</button>
+        <script src="powerclip_preview.js"></script>
+    </body>
+</html>

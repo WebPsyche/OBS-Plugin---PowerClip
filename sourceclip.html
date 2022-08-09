@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+    <title>Power Clip</title>
+    
+    <link rel="stylesheet" href="powerclip.css">
+    <script>
+        window.addEventListener('message', function(event){
+            location.reload()
+           //alert(event.data)
+           document.querySelector('.preview').appendChild(data.event);
+           //event.source.postMessage('received', event.origin)
+        }, false);
+      
+     
+       
+
+        </script>
+    </head>
+    <body>
+        <h1>PowerCLip</h1>
+        <div class="preview"> </div>
+        <div class="test"> </div>
+        <textarea id="textarea" placeholder="text"  disabled></textarea>
+    
+        
+    </body>
+    <script>
+        var text =  (localStorage.getItem("cloe"));
+      console.log(text)
+        document.querySelector('.test').textContent = text ;
+        </script>
+</html>
