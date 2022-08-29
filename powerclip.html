@@ -1,9 +1,10 @@
 <!doctype html>
-<html>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <head>
     <title>Power Clip</title>
     
-    <link rel="stylesheet" href="powerclip.css">
+    <link rel="stylesheet" href="css/powerclip.css">
+    <script src="js/jscolor.js"></script>
     <script>
       function allowDrop(ev){
         ev.preventDefault();
@@ -16,9 +17,9 @@
         var data = ev.dataTransfer.getData("span")
         ev.target.appendChild(document.getElementById(data));
       }
-      var otherWindow;
+      var otherWindow ;
       function openOther(){
-        otherWindow = window.open("sourceclip.html", "otherWindow")
+        otherWindow = window.open("sourceclip.html","otherWindow")
       }
       $saul = document.querySelector('.sdf')
       function otherFunc(){
@@ -28,63 +29,512 @@
       </script>
     </head>
     <body>
-        <h1>PowerCLip</h1>
-        <div class="preview"> 
-          <div class="screen slide1">
-            <header contenteditable="true">header</header>
-            <p contenteditable="true">body</p>
-            
-          </div>
-        </div>
-        <!first slider>
-
+        <h3>PowerCLip</h3>
 
         <div class="body">
           <section class="one" data-action="action1">
-            <button type="menu" class="collapsible" contenteditable="false">Slide 1
-              <label class="switch">
-                <input type="checkbox"  class="checkbox" id="1">
-                <span class="slider round">
+           <div class="collapsibleHeader"> 
+             <button type="button" class="rename"></button>
+             <button type="menu" class="collapsible" contenteditable="true">
+            </button>
+            <span class="previewbtn" title="preview"><i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-display" viewBox="0 0 16 16">
+              <path d="M0 4s0-2 2-2h12s2 0 2 2v6s0 2-2 2h-4c0 .667.083 1.167.25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75c.167-.333.25-.833.25-1.5H2s-2 0-2-2V4zm1.398-.855a.758.758 0 0 0-.254.302A1.46 1.46 0 0 0 1 4.01V10c0 .325.078.502.145.602.07.105.17.188.302.254a1.464 1.464 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.758.758 0 0 0 .254-.302 1.464 1.464 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.757.757 0 0 0-.302-.254A1.46 1.46 0 0 0 13.99 3H2c-.325 0-.502.078-.602.145z"/>
+            </svg></i>
+            </span>
+            <span class="vidShow" onclick="" title="project slide" >
+             <span id="vidOn"> <i ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-video-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z"/>
+              </svg></i>
+             </span>
+              <i id="vidOff"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-video-off-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M10.961 12.365a1.99 1.99 0 0 0 .522-1.103l3.11 1.382A1 1 0 0 0 16 11.731V4.269a1 1 0 0 0-1.406-.913l-3.111 1.382A2 2 0 0 0 9.5 3H4.272l6.69 9.365zm-10.114-9A2.001 2.001 0 0 0 0 5v6a2 2 0 0 0 2 2h5.728L.847 3.366zm9.746 11.925-10-14 .814-.58 10 14-.814.58z"/>
+              </svg></i>
+            </span>
+
+           </div>
+            <div class="collapsibleContent">
+               
+                <fieldset id="text">
+                  <legend for="text">Text Animation</legend>
+                  <span class="presets">
+                    <button class="setTextAnimation1">basic</button>
+                    <button class="setTextAnimation2">welcome</button>
+                    <button class="setTextAnimation3">Warm</button>
+                    <button class="setTextAnimation4">Warm</button>
+                    <button class="setTextAnimation5">Warm</button>
+                    <button class="setTextAnimation6">Warm</button>
                 </span>
-                </label>
-              <span type="button">remove</span>
-            </button>
-            <div>
-              <fieldset id="text">
-                <figure for="text">Text</figure>
                 </fieldset>
-              <input type="color" value="#3C107E" oninput="addBgColor(value)" title="background color">
-              <input type="color" value="#8685C7" oninput="addColor(value)" title="text color">
-              <input type="number" value="20" oninput="fontSize(value)" title="text size">
-              <input type="number" value="20" oninput="setX(value)" title="transform X">
-              <input type="number" value="20" oninput="setY(value)" title="transform Y">
-              <br>
-              <input type="header" value="header">
-              <textarea placeholder="type your text here"></textarea>
+
+                <fieldset id="text" style="display:none ;">
+                  <legend for="text">Background Animation</legend>
+                  <span class="presets2">
+                    <button class="BackgroundAnimation1">basic</button>
+                    <button class="BackgroundAnimation2">welcome</button>
+                    <button class="BackgroundAnimation3">Warm</button>
+                    <button class="BackgroundAnimation4">Warm</button>
+                    <button class="BackgroundAnimation5">Warm</button>
+                    <button class="BackgroundAnimation6">Warm</button>
+                </span>
+                    </fieldset>
+                
+                <fieldset id="text">
+                  <legend for="text">Input Text</legend>
+                  <div class="formatText">
+                    
+                    <span class="allignHeaderText">
+                         <i title="left" class="alignHeaderTextLeft"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-text-left" viewBox="0 0 16 16">
+                           <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                         </svg></i>
+       
+                         <i title="center" class="alignHeaderTextCenter"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-text-center" viewBox="0 0 16 16">
+                           <path fill-rule="evenodd" d="M4 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                         </svg></i>
+       
+                         <i title="right" class="alignHeaderTextRight"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-text-right" viewBox="0 0 16 16">
+                           <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                         </svg></i>
+                    </span>
+                    <span class="adjustHeaderTextPositionX">
+                       <i title="left" class="headerTextPositionLeftX"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-square" viewBox="0 0 16 16">
+                         <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                         <path d="M10.205 12.456A.5.5 0 0 0 10.5 12V4a.5.5 0 0 0-.832-.374l-4.5 4a.5.5 0 0 0 0 .748l4.5 4a.5.5 0 0 0 .537.082z"/>
+                       </svg></i>
+  
+                       
+  
+                       <i title="right" class="headerTextPositionRightX"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-square" viewBox="0 0 16 16">
+                         <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                         <path d="M5.795 12.456A.5.5 0 0 1 5.5 12V4a.5.5 0 0 1 .832-.374l4.5 4a.5.5 0 0 1 0 .748l-4.5 4a.5.5 0 0 1-.537.082z"/>
+                       </svg></i>
+                    </span>
+                    <span class="adjustHeaderTextPositionY">
+                        <i title="up" class="headerTextPositionUpY"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-square" viewBox="0 0 16 16">
+                          <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                          <path d="M3.544 10.705A.5.5 0 0 0 4 11h8a.5.5 0 0 0 .374-.832l-4-4.5a.5.5 0 0 0-.748 0l-4 4.5a.5.5 0 0 0-.082.537z"/>
+                        </svg></i>
+  
+                      
+  
+                        <i title="down" class="headerTextPositionDownY"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-square" viewBox="0 0 16 16">
+                          <path d="M3.626 6.832A.5.5 0 0 1 4 6h8a.5.5 0 0 1 .374.832l-4 4.5a.5.5 0 0 1-.748 0l-4-4.5z"/>
+                          <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2z"/>
+                        </svg></i>
+                    </span>
+                    <span class="HeaderTextFontStyle">
+                      <i title="bold" class="headerTextBold"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-type-bold" viewBox="0 0 16 16">
+                        <path d="M8.21 13c2.106 0 3.412-1.087 3.412-2.823 0-1.306-.984-2.283-2.324-2.386v-.055a2.176 2.176 0 0 0 1.852-2.14c0-1.51-1.162-2.46-3.014-2.46H3.843V13H8.21zM5.908 4.674h1.696c.963 0 1.517.451 1.517 1.244 0 .834-.629 1.32-1.73 1.32H5.908V4.673zm0 6.788V8.598h1.73c1.217 0 1.88.492 1.88 1.415 0 .943-.643 1.449-1.832 1.449H5.907z"/>
+                      </svg></i>
+                      <i title="italics" class="headerTextItalics"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-type-italic" viewBox="0 0 16 16">
+                        <path d="M7.991 11.674 9.53 4.455c.123-.595.246-.71 1.347-.807l.11-.52H7.211l-.11.52c1.06.096 1.128.212 1.005.807L6.57 11.674c-.123.595-.246.71-1.346.806l-.11.52h3.774l.11-.52c-1.06-.095-1.129-.211-1.006-.806z"/>
+                      </svg></i>
+                      <i title="unuderline" class="headerTextUnderline"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-type-underline" viewBox="0 0 16 16">
+                        <path d="M5.313 3.136h-1.23V9.54c0 2.105 1.47 3.623 3.917 3.623s3.917-1.518 3.917-3.623V3.136h-1.23v6.323c0 1.49-.978 2.57-2.687 2.57-1.709 0-2.687-1.08-2.687-2.57V3.136zM12.5 15h-9v-1h9v1z"/>
+                      </svg></i>
+                    </span>
+                    <span class="HeaderTextFontSize">
+                      <i title="+" class="headerTextFontSizeIncrease"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up" viewBox="0 0 16 16">
+                        <path d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z"/>
+                      </svg></i>
+                      <i title="-" class="headerTextFontSizeDecrease"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+                        <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+                      </svg></i>
+                    </span>
+                    <select title="font header" class="fontHeader" name="fontHeader">
+                      <option value="font1">Font1</option>
+                      <option value="font2">Font2</option>
+                      <option value="font3">Font3</option>
+                    </select>
+                    </div>
+
+                  <div class="formatText">
+                    
+                    <span class="allignBodyText">
+                         <i title="left" class="alignBodyTextLeft"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-text-left" viewBox="0 0 16 16">
+                           <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                         </svg></i>
+       
+                         <i title="middle" class="alignBodyTextCenter"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-text-center" viewBox="0 0 16 16">
+                           <path fill-rule="evenodd" d="M4 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                         </svg></i>
+       
+                         <i title="right" class="alignBodyTextRight"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-text-right" viewBox="0 0 16 16">
+                           <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                         </svg></i>
+                    </span>
+                    <span class="adjustBodyTextPositionX">
+                       <i title="left" class="bodyTextPositionLeftX"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-square" viewBox="0 0 16 16">
+                         <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                         <path d="M10.205 12.456A.5.5 0 0 0 10.5 12V4a.5.5 0 0 0-.832-.374l-4.5 4a.5.5 0 0 0 0 .748l4.5 4a.5.5 0 0 0 .537.082z"/>
+                       </svg></i>
+  
+                       
+  
+                       <i title="right" class="bodyTextPositionRightX"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-square" viewBox="0 0 16 16">
+                         <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                         <path d="M5.795 12.456A.5.5 0 0 1 5.5 12V4a.5.5 0 0 1 .832-.374l4.5 4a.5.5 0 0 1 0 .748l-4.5 4a.5.5 0 0 1-.537.082z"/>
+                       </svg></i>
+                    </span>
+                    <span class="adjustBodyTextPositionY">
+                        <i title="up" class="bodyTextPositionUpY"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-square" viewBox="0 0 16 16">
+                          <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                          <path d="M3.544 10.705A.5.5 0 0 0 4 11h8a.5.5 0 0 0 .374-.832l-4-4.5a.5.5 0 0 0-.748 0l-4 4.5a.5.5 0 0 0-.082.537z"/>
+                        </svg></i>
+  
+                      
+  
+                        <i title="down" class="bodyTextPositionDownY"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-square" viewBox="0 0 16 16">
+                          <path d="M3.626 6.832A.5.5 0 0 1 4 6h8a.5.5 0 0 1 .374.832l-4 4.5a.5.5 0 0 1-.748 0l-4-4.5z"/>
+                          <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2z"/>
+                        </svg></i>
+                    </span>
+                    <span class="bodyTextFontStyle">
+                      <i title="bold" class="bodyTextBold"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-type-bold" viewBox="0 0 16 16">
+                        <path d="M8.21 13c2.106 0 3.412-1.087 3.412-2.823 0-1.306-.984-2.283-2.324-2.386v-.055a2.176 2.176 0 0 0 1.852-2.14c0-1.51-1.162-2.46-3.014-2.46H3.843V13H8.21zM5.908 4.674h1.696c.963 0 1.517.451 1.517 1.244 0 .834-.629 1.32-1.73 1.32H5.908V4.673zm0 6.788V8.598h1.73c1.217 0 1.88.492 1.88 1.415 0 .943-.643 1.449-1.832 1.449H5.907z"/>
+                      </svg></i>
+                      <i title="italics" class="bodyTextItalics"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-type-italic" viewBox="0 0 16 16">
+                        <path d="M7.991 11.674 9.53 4.455c.123-.595.246-.71 1.347-.807l.11-.52H7.211l-.11.52c1.06.096 1.128.212 1.005.807L6.57 11.674c-.123.595-.246.71-1.346.806l-.11.52h3.774l.11-.52c-1.06-.095-1.129-.211-1.006-.806z"/>
+                      </svg></i>
+                      <i title="unuderline" class="bodyTextUnderline"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-type-underline" viewBox="0 0 16 16">
+                        <path d="M5.313 3.136h-1.23V9.54c0 2.105 1.47 3.623 3.917 3.623s3.917-1.518 3.917-3.623V3.136h-1.23v6.323c0 1.49-.978 2.57-2.687 2.57-1.709 0-2.687-1.08-2.687-2.57V3.136zM12.5 15h-9v-1h9v1z"/>
+                      </svg></i>
+                    </span>
+                    <span class="bodyTextFontSize">
+                      <i title="+" class="bodyTextFontSizeIncrease"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up" viewBox="0 0 16 16">
+                        <path d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z"/>
+                      </svg></i>
+                      <i title="-" class="bodyTextFontSizeDecrease"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+                        <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+                      </svg></i>
+                    </span>
+                    <select title="font text" class="fontBody" name="fontBody">
+                      <option value="font1">Font1</option>
+                      <option value="font2">Font2</option>
+                      <option value="font3">Font3</option>
+                    </select>
+                    </div>
+                  
+
+
+                  <div class="formatText2">
+                    <input data-jscolor="{width:100, height:50, padding:5, borderRadius:3, borderWidth:1, controlBorderWidth:0, backgroundColor:'#1f1e1f', shadow:true, previewSize:20}" title="header background-color" class="headerTextColor">
+                    <input data-jscolor="{width:100, height:50, padding:5, borderRadius:3, borderWidth:1, controlBorderWidth:0, backgroundColor:'#1f1e1f',shadow:true, previewSize:20}" title="header background-color" class="headerTextBackgroundColor">
+                   
+                    <input data-jscolor="{width:100, height:50, padding:5, borderRadius:3, borderWidth:1, controlBorderWidth:0, backgroundColor:'#1f1e1f',shadow:true, previewSize:20}" title="text color" class="bodyTextColor">
+                    <input data-jscolor="{width:100, height:50, padding:5, borderRadius:3, borderWidth:1, controlBorderWidth:0, backgroundColor:'#1f1e1f',shadow:true, previewSize:20}" title="text backgound-color" class="bodyTextBackgroundColor">
+                    
+                    <input data-jscolor="{width:100, height:50, padding:5, borderRadius:3, borderWidth:1, controlBorderWidth:0, backgroundColor:'#1f1e1f',shadow:true, previewSize:30}" title="background-color" class="backgroundColor">
+                </div>
+                
+                  <div class="headerColor">
+                    <input type="header" class="headerTextInput">
+                  </div>
+                  <div class="bodyColor">
+                     <textarea placeholder="type your text here" class="bodyTextInput"></textarea>
+                    </div>
+                <div class="memoryPane">
+                    <span type="radio" id="MP1" class="memory1">1</span>
+                    <span type="radio" id="MP1" class="memory2">2</span>
+                    <span type="radio" id="MP1" class="memory3">3</span>
+                    <span type="radio" id="MP1" class="memory4">4</span>
+                    <span type="radio" id="MP1" class="memory5">5</span>
+                    <span type="radio" id="MP1" class="memory6">6</span>
+                    <span type="radio" id="MP1" class="memory7">7</span>
+                    <span type="radio" id="MP1" class="memory8">8</span>
+                    <span type="radio" id="MP1" class="memory9">9</span>
+                    <span type="radio" id="MP1" class="memory10">10</span>
+
+                    <button class="resetAllMemory">
+                        <i><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                        </svg></i>
+                    </button>
+                    <button class="deleteMemory">
+                       <i><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                       <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                       <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                       </svg></i>
+                    </button>
+                  </div>
+                  
+                </fieldset>
+
+                
+              
+              
+              
             </div>
-
           </section>
-         </div>
 
-         <div class="body">
-          <section class="two" data-action="action2">
-            <button type="menu" class="collapsible" contenteditable="false">Slide 2
-              <span type="button">remove</span>
-            </button>
-            <div>
-              <input type="color" value="#3C107E" oninput="addBgColor(value)" title="background color">
-              <input type="color" value="#8685C7" oninput="addColor(value)" title="text color">
-              <input type="number" value="20" oninput="fontSize(value)" title="text size">
-              <input type="number" value="20" oninput="setX(value)" title="transform X">
-              <input type="number" value="20" oninput="setY(value)" title="transform Y">
+          <section class="one" data-action="action1">
+            <div class="collapsibleHeader"> 
+              <button type="button" class="rename"></button>
+              <button type="menu" class="collapsible" contenteditable="true">Slide 1
+               <label class="switch">
+                 <input type="checkbox"  class="checkbox" id="1">
+                 <span class="slider round">
+                 </span>
+                 </label>
+               <span type="button">remove</span>
+     
+             </button>
+             <span class="previewbtn" title="preview"><i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-display" viewBox="0 0 16 16">
+               <path d="M0 4s0-2 2-2h12s2 0 2 2v6s0 2-2 2h-4c0 .667.083 1.167.25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75c.167-.333.25-.833.25-1.5H2s-2 0-2-2V4zm1.398-.855a.758.758 0 0 0-.254.302A1.46 1.46 0 0 0 1 4.01V10c0 .325.078.502.145.602.07.105.17.188.302.254a1.464 1.464 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.758.758 0 0 0 .254-.302 1.464 1.464 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.757.757 0 0 0-.302-.254A1.46 1.46 0 0 0 13.99 3H2c-.325 0-.502.078-.602.145z"/>
+             </svg></i>
+             </span>
+             <span class="vidShow" onclick="" title="project slide" >
+              <span id="vidOn"> <i ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-video-fill" viewBox="0 0 16 16">
+                 <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z"/>
+               </svg></i>
+              </span>
+               <i id="vidOff"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-video-off-fill" viewBox="0 0 16 16">
+                 <path fill-rule="evenodd" d="M10.961 12.365a1.99 1.99 0 0 0 .522-1.103l3.11 1.382A1 1 0 0 0 16 11.731V4.269a1 1 0 0 0-1.406-.913l-3.111 1.382A2 2 0 0 0 9.5 3H4.272l6.69 9.365zm-10.114-9A2.001 2.001 0 0 0 0 5v6a2 2 0 0 0 2 2h5.728L.847 3.366zm9.746 11.925-10-14 .814-.58 10 14-.814.58z"/>
+               </svg></i>
+             </span>
+ 
             </div>
+             <div class="collapsibleContent">
+                
+                 <fieldset id="text">
+                   <legend for="text">Text Animation</legend>
+                   <span class="presets">
+                     <button class="setTextAnimation1">basic</button>
+                     <button class="setTextAnimation2">welcome</button>
+                     <button class="setTextAnimation3">Warm</button>
+                     <button class="setTextAnimation4">Warm</button>
+                     <button class="setTextAnimation5">Warm</button>
+                     <button class="setTextAnimation6">Warm</button>
+                 </span>
+                 </fieldset>
+ 
+                 <fieldset id="text">
+                   <legend for="text">Background Animation</legend>
+                   <span class="presets2">
+                     <button class="BackgroundAnimation1">basic</button>
+                     <button class="BackgroundAnimation2">welcome</button>
+                     <button class="BackgroundAnimation3">Warm</button>
+                     <button class="BackgroundAnimation4">Warm</button>
+                     <button class="BackgroundAnimation5">Warm</button>
+                     <button class="BackgroundAnimation6">Warm</button>
+                 </span>
+                 </fieldset>
+                 
+                 <fieldset id="text">
+                   <legend for="text">Input Text</legend>
+                   <div class="formatText">
+                     
+                     <span class="allignHeaderText">
+                          <i title="left" class="alignHeaderTextLeft"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-text-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                          </svg></i>
+        
+                          <i title="center" class="alignHeaderTextCenter"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-text-center" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M4 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                          </svg></i>
+        
+                          <i title="right" class="alignHeaderTextRight"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-text-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                          </svg></i>
+                     </span>
+                     <span class="adjustHeaderTextPositionX">
+                        <i title="left" class="headerTextPositionLeftX"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-square" viewBox="0 0 16 16">
+                          <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                          <path d="M10.205 12.456A.5.5 0 0 0 10.5 12V4a.5.5 0 0 0-.832-.374l-4.5 4a.5.5 0 0 0 0 .748l4.5 4a.5.5 0 0 0 .537.082z"/>
+                        </svg></i>
+   
+                        
+   
+                        <i title="right" class="headerTextPositionRightX"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-square" viewBox="0 0 16 16">
+                          <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                          <path d="M5.795 12.456A.5.5 0 0 1 5.5 12V4a.5.5 0 0 1 .832-.374l4.5 4a.5.5 0 0 1 0 .748l-4.5 4a.5.5 0 0 1-.537.082z"/>
+                        </svg></i>
+                     </span>
+                     <span class="adjustHeaderTextPositionY">
+                         <i title="up" class="headerTextPositionUpY"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-square" viewBox="0 0 16 16">
+                           <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                           <path d="M3.544 10.705A.5.5 0 0 0 4 11h8a.5.5 0 0 0 .374-.832l-4-4.5a.5.5 0 0 0-.748 0l-4 4.5a.5.5 0 0 0-.082.537z"/>
+                         </svg></i>
+   
+                       
+   
+                         <i title="down" class="headerTextPositionDownY"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-square" viewBox="0 0 16 16">
+                           <path d="M3.626 6.832A.5.5 0 0 1 4 6h8a.5.5 0 0 1 .374.832l-4 4.5a.5.5 0 0 1-.748 0l-4-4.5z"/>
+                           <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2z"/>
+                         </svg></i>
+                     </span>
+                     <span class="HeaderTextFontStyle">
+                       <i title="bold" class="headerTextBold"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-type-bold" viewBox="0 0 16 16">
+                         <path d="M8.21 13c2.106 0 3.412-1.087 3.412-2.823 0-1.306-.984-2.283-2.324-2.386v-.055a2.176 2.176 0 0 0 1.852-2.14c0-1.51-1.162-2.46-3.014-2.46H3.843V13H8.21zM5.908 4.674h1.696c.963 0 1.517.451 1.517 1.244 0 .834-.629 1.32-1.73 1.32H5.908V4.673zm0 6.788V8.598h1.73c1.217 0 1.88.492 1.88 1.415 0 .943-.643 1.449-1.832 1.449H5.907z"/>
+                       </svg></i>
+                       <i title="italics" class="headerTextItalics"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-type-italic" viewBox="0 0 16 16">
+                         <path d="M7.991 11.674 9.53 4.455c.123-.595.246-.71 1.347-.807l.11-.52H7.211l-.11.52c1.06.096 1.128.212 1.005.807L6.57 11.674c-.123.595-.246.71-1.346.806l-.11.52h3.774l.11-.52c-1.06-.095-1.129-.211-1.006-.806z"/>
+                       </svg></i>
+                       <i title="unuderline" class="headerTextUnderline"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-type-underline" viewBox="0 0 16 16">
+                         <path d="M5.313 3.136h-1.23V9.54c0 2.105 1.47 3.623 3.917 3.623s3.917-1.518 3.917-3.623V3.136h-1.23v6.323c0 1.49-.978 2.57-2.687 2.57-1.709 0-2.687-1.08-2.687-2.57V3.136zM12.5 15h-9v-1h9v1z"/>
+                       </svg></i>
+                     </span>
+                     <span class="HeaderTextFontSize">
+                       <i title="+" class="headerTextFontSizeIncrease"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up" viewBox="0 0 16 16">
+                         <path d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z"/>
+                       </svg></i>
+                       <i title="-" class="headerTextFontSizeDecrease"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+                         <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+                       </svg></i>
+                     </span>
+                     
+                     </div>
+ 
+                   <div class="formatText">
+                     
+                     <span class="allignBodyText">
+                          <i title="left" class="alignBodyTextLeft"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-text-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                          </svg></i>
+        
+                          <i title="middle" class="alignBodyTextCenter"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-text-center" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M4 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                          </svg></i>
+        
+                          <i title="right" class="alignBodyTextRight"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-text-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                          </svg></i>
+                     </span>
+                     <span class="adjustBodyTextPositionX">
+                        <i title="left" class="bodyTextPositionLeftX"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-square" viewBox="0 0 16 16">
+                          <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                          <path d="M10.205 12.456A.5.5 0 0 0 10.5 12V4a.5.5 0 0 0-.832-.374l-4.5 4a.5.5 0 0 0 0 .748l4.5 4a.5.5 0 0 0 .537.082z"/>
+                        </svg></i>
+   
+                        
+   
+                        <i title="right" class="bodyTextPositionRightX"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-square" viewBox="0 0 16 16">
+                          <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                          <path d="M5.795 12.456A.5.5 0 0 1 5.5 12V4a.5.5 0 0 1 .832-.374l4.5 4a.5.5 0 0 1 0 .748l-4.5 4a.5.5 0 0 1-.537.082z"/>
+                        </svg></i>
+                     </span>
+                     <span class="adjustBodyTextPositionY">
+                         <i title="up" class="bodyTextPositionUpY"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-square" viewBox="0 0 16 16">
+                           <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                           <path d="M3.544 10.705A.5.5 0 0 0 4 11h8a.5.5 0 0 0 .374-.832l-4-4.5a.5.5 0 0 0-.748 0l-4 4.5a.5.5 0 0 0-.082.537z"/>
+                         </svg></i>
+   
+                       
+   
+                         <i title="down" class="bodyTextPositionDownY"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-square" viewBox="0 0 16 16">
+                           <path d="M3.626 6.832A.5.5 0 0 1 4 6h8a.5.5 0 0 1 .374.832l-4 4.5a.5.5 0 0 1-.748 0l-4-4.5z"/>
+                           <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2z"/>
+                         </svg></i>
+                     </span>
+                     <span class="bodyTextFontStyle">
+                       <i title="bold" class="bodyTextBold"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-type-bold" viewBox="0 0 16 16">
+                         <path d="M8.21 13c2.106 0 3.412-1.087 3.412-2.823 0-1.306-.984-2.283-2.324-2.386v-.055a2.176 2.176 0 0 0 1.852-2.14c0-1.51-1.162-2.46-3.014-2.46H3.843V13H8.21zM5.908 4.674h1.696c.963 0 1.517.451 1.517 1.244 0 .834-.629 1.32-1.73 1.32H5.908V4.673zm0 6.788V8.598h1.73c1.217 0 1.88.492 1.88 1.415 0 .943-.643 1.449-1.832 1.449H5.907z"/>
+                       </svg></i>
+                       <i title="italics" class="bodyTextItalics"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-type-italic" viewBox="0 0 16 16">
+                         <path d="M7.991 11.674 9.53 4.455c.123-.595.246-.71 1.347-.807l.11-.52H7.211l-.11.52c1.06.096 1.128.212 1.005.807L6.57 11.674c-.123.595-.246.71-1.346.806l-.11.52h3.774l.11-.52c-1.06-.095-1.129-.211-1.006-.806z"/>
+                       </svg></i>
+                       <i title="unuderline" class="bodyTextUnderline"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-type-underline" viewBox="0 0 16 16">
+                         <path d="M5.313 3.136h-1.23V9.54c0 2.105 1.47 3.623 3.917 3.623s3.917-1.518 3.917-3.623V3.136h-1.23v6.323c0 1.49-.978 2.57-2.687 2.57-1.709 0-2.687-1.08-2.687-2.57V3.136zM12.5 15h-9v-1h9v1z"/>
+                       </svg></i>
+                     </span>
+                     <span class="bodyTextFontSize">
+                       <i title="+" class="bodyTextFontSizeIncrease"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up" viewBox="0 0 16 16">
+                         <path d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z"/>
+                       </svg></i>
+                       <i title="-" class="bodyTextFontSizeDecrease"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+                         <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+                       </svg></i>
+                     </span>
+                     
+                     </div>
+                   
+ 
+ 
+                   <div class="formatText2">
+                     <button data-jscolor="{preset:'dark', width:100, height:50, paletteCols:10, value:'rgba(51,112,255)', }" title="header color" class="headerTextColor"></button>
+                     <button data-jscolor="{preset:'dark', width:100, height:50, paletteCols:10, value:'rgba(51,153,255,)', }" title="header background-color" class="headerTextBackgroundColor"></button>
+                     <select title="font header" class="fontHeader" name="fontHeader">
+                       <option value="font1">Font1</option>
+                       <option value="font2">Font2</option>
+                       <option value="font3">Font3</option>
+                     </select>
+                     <select title="font text" class="fontBody" name="fontBody">
+                       <option value="font1">Font1</option>
+                       <option value="font2">Font2</option>
+                       <option value="font3">Font3</option>
+                     </select>
+                     <button data-jscolor="{preset:'dark', width:100, height:50, paletteCols:10, value:'rgba(51,223,255)', }" title="text color" class="bodyTextColor"></button>
+                     <button data-jscolor="{preset:'dark', width:100, height:50, paletteCols:10, value:'rgba(51,02,255,)', }" title="text backgound-color" class="bodyTextBackgroundColor"></button>
+                     
+                   </div>
+                   <div class="headerColor">
+                     <input type="header" class="headerTextInput">
+                   </div>
+                   <div class="bodyColor">
+                      <textarea placeholder="type your text here" class="bodyTextInput"></textarea>
+                     </div>
+                 <div class="memoryPane">
+                     <span type="radio" name="memory" class="memory1">1</span>
+                     <span type="radio" name="memory" class="memory2">2</span>
+                     <span type="radio" name="memory" class="memory3">3</span>
+                     <span type="radio" name="memory" class="memory4">4</span>
+                     <span type="radio" name="memory" class="memory5">5</span>
+                     <span type="radio" name="memory" class="memory6">6</span>
+                     <span type="radio" name="memory" class="memory7">7</span>
+                     <span type="radio" name="memory" class="memory8">8</span>
+                     <span type="radio" name="memory" class="memory9">9</span>
+                     <span type="radio" name="memory" class="memory10">10</span>
+ 
+                     <button class="resetAllMemory">
+                         <i><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                         <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                         </svg></i>
+                     </button>
+                     <button class="deleteMemory">
+                        <i><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                        </svg></i>
+                     </button>
+                   </div>
+                   
+                 </fieldset>
+ 
+                 
+               
+               
+               
+             </div>
+           </section>
+        </div>
 
-          </section>
-         </div>
+        <div class="animationContainer">
+          <header>Animation Pane</header>
+            <div class="preview" id="preview"> 
+             <div class="screen slide1">
+                <header contenteditable="true">header</header>
+                  <p contenteditable="true">body</p>
+              </div>
+        
+            </div>
+          <span class="presets">
+              <button onclick="setAnimationClass('basic')">basic</button>
+              <button onclick="setAnimationClass('welcome')">welcome</button>
+              <button onclick="setAnimationClass('warm')">Warm</button>
+              <button onclick="setAnimationClass('warm')">Warm</button>
+              <button onclick="setAnimationClass('warm')">Warm</button>
+              <button onclick="setAnimationClass('warm')">Warm</button>
+          </span>
+          <input type="button" value="OK" style="float:right;" onclick="openAndCloseAnimations('none')">
+        </div>
+
+         
 
         <button class="slideCounnter" onclick="addSlide()">Add Slide</button>
         <button  onclick="openOther()">openOther</button>
         <button  onclick="otherFunc()">openOther</button>
-        <script src="powerclip_preview.js"></script>
+        <br>
+        <button onclick="transit('Basic')">swing</button>
+        <button onclick="transit('jump')">jump</button>
+        <script src="js/powerclip_preview.js"></script>
     </body>
 </html>

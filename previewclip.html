@@ -1,0 +1,130 @@
+<!doctype html>
+<head>
+    <title>PreviewClip</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="css/animationLibrary.css"> 
+<style>
+    h1{
+        background:rgb(0,0,0);
+        margin:0;
+        color:rgb(240, 255, 255);
+        font-size: medium;
+        text-align: center;
+        display:;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .watermark{
+        color:rgb(240, 255, 255);
+        position: fixed;
+        text-align: ;
+        width: 100%;
+        text-align: center;
+        vertical-align: middle;
+        opacity:0.4;
+        z-index:0;
+        display:;
+        font-size:calc(20vw - 14vh);
+        letter-spacing:1vw;
+        outline: none;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        
+        
+
+    }
+    </style>
+</head>
+<body onload="">
+    
+    <div id="slide" class="">
+        <h1 class="slideInfo">Slide Number</h1>
+        <header>slide 1</header>
+        <p class="bodyText">Text 1</p>
+        <div id="background" class=""></div>
+        </div>
+    
+    <div id="slide" class="">
+        <h1 class="slideInfo">Slide Number</h1>
+        <header>Slide 2</header>
+        <p class="bodyText">Text 1</p>
+        <div id="background" class=""></div>
+    </div>        
+        <p class="watermark">Preview</p>
+
+
+<script>
+    const allSlides = document.querySelectorAll('#slide')
+    const slides = document.querySelector('#slide')
+    slides.style.display = "none"
+    const allSlidesBackground = document.querySelectorAll('#background')
+   
+    //slide collection
+    $allSlides = []
+    let slideInfoFromLocalStorage = JSON.parse(localStorage.getItem('allSlides'))
+   // console.log(slideInfoFromLocalStorage)
+      $allSlides = slideInfoFromLocalStorage 
+            //setProperties()
+
+    
+    
+
+ 
+    //GET ALL DIVS
+    
+   window.addEventListener('storage',()=>{
+
+     slideInfoFromLocalStorage = JSON.parse(localStorage.getItem('allSlides'))
+        //console.log(slideInfoFromLocalStorage)
+      $allSlides = slideInfoFromLocalStorage 
+
+    for(let i = 0; i < allSlides.length; i++){
+        //console.log($allSlides[i])
+        //h1 for slide info and slide information
+        $slideInfo = document.querySelectorAll('.slideInfo')
+        $slideInfo[i].textContent = $allSlides[i].slideInfo.slideName
+        allSlides[i].className = $allSlides[i].slideInfo.slideAnimationClass
+        allSlides[i].style.display = $allSlides[i].slideInfo.previewDisplay
+        
+        //headers
+            $slideHeader = document.querySelectorAll('header')
+            $slideHeader[i].textContent = $allSlides[i].header.headerText
+            $slideHeader[i].style.textAlign = $allSlides[i].header.headerTextAlign  //textAlign
+            $slideHeader[i].style.fontStyle = $allSlides[i].header.headerTextItalics //text italics
+            $slideHeader[i].style.fontWeight = $allSlides[i].header.headerTextBold  //text bold
+            $slideHeader[i].style.textDecoration = $allSlides[i].header.headerTextUnderline //underline
+            $slideHeader[i].style.color = $allSlides[i].header.headerTextColor //textColor
+            $slideHeader[i].style.backgroundColor = $allSlides[i].header.headerTextBackgroundColor //textBackgroundColor
+            $slideHeader[i].style.fontFamily = $allSlides[i].header.headerFont //font
+            $slideHeader[i].style.fontSize = `${$allSlides[i].header.headerFontSize - 4}vw` //font size
+            $slideHeader[i].style.marginLeft = $allSlides[i].header.headerPositionX +"px"// horizontal position
+            $slideHeader[i].style.marginTop = $allSlides[i].header.headerPositionY +"px"// vertical position
+
+        //body
+        $slideBody = document.querySelectorAll('.bodyText')
+            $slideBody[i].textContent = $allSlides[i].body.bodyText
+            $slideBody[i].style.textAlign = $allSlides[i].body.bodyTextAlign  //textAlign
+            $slideBody[i].style.fontStyle = $allSlides[i].body.bodyTextItalics //text italics
+            $slideBody[i].style.fontWeight = $allSlides[i].body.bodyTextBold  //text bold
+            $slideBody[i].style.textDecoration = $allSlides[i].body.bodyTextUnderline //underline
+            $slideBody[i].style.color = $allSlides[i].body.bodyTextColor //textColor
+            $slideBody[i].style.backgroundColor = $allSlides[i].body.bodyTextBackgroundColor //textBackgroundColor
+            $slideBody[i].style.fontFamily = $allSlides[i].body.bodyFont //font
+            $slideBody[i].style.fontSize = $allSlides[i].body.bodyFontSize + "vw"//font size
+            $slideBody[i].style.marginLeft = $allSlides[i].body.bodyPositionX +"px"// horizontal position
+            $slideBody[i].style.marginTop = $allSlides[i].body.bodyPositionY + "px" // vertical position
+            console.log($slideBody[i].style.marginLeft)
+        //background
+        allSlidesBackground[i].style.className = $allSlides[i].background.backgroundAnimationClass
+        allSlidesBackground[i].style.backgroundColor = $allSlides[i].background.backgroundColor
+        allSlidesBackground[i].style.display = $allSlides[i].background.backgroundDisplay
+            
+
+    }
+      
+   })
+
+   
+
+    </script>
+   
+</body>
+</html>

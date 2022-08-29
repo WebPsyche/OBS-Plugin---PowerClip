@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+    <head>
+    <title>VideoClip</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="css/animationLibrary.css">
+     
+    </head>
+    <body>
+
+        <div id="slideVideo" class="">
+            <header>Heading</header>
+            <p class="bodyText">Text</p>
+            <div id="background" class=""></div>
+        </div>    
+
+     
+
+    <script>
+       slide = document.querySelector('#slideVideo')
+       slideHeader = document.querySelector('#slideVideo header')
+       slideBody = document.querySelector('#slideVideo p')
+       slideBackground = document.querySelector('#background')
+
+         // $slide1Body = document.querySelector("#slide1 p")
+         // $slide1Body.textContent = `protocool:${location.protocol} 
+         // hostname: ${location.hostname}  
+         // href:${location.href} 
+         // path:${location.pathname} 
+         // port:${location.port}`
+
+        const mess = new BroadcastChannel('show_video')
+        const vidOff = new BroadcastChannel('hide_video') 
+        mess.addEventListener('message',(e)=>{
+            //console.log(e.data.background)
+            if(e.data==='off'){
+                
+                    slide.style.display = 'none'
+                
+            }else{
+            //slide stuff
+            slide.className = e.data.slideInfo.slideAnimationClass
+            slide.style.display = e.data.slideInfo.videoDisplay
+            //headers
+            slideHeader.textContent = e.data.header.headerText
+            slideHeader.style.textAlign = e.data.header.headerTextAlign  //textAlign
+            slideHeader.style.fontStyle = e.data.header.headerTextItalics //text italics
+            slideHeader.style.fontWeight = e.data.header.headerTextBold  //text bold
+            slideHeader.style.textDecoration = e.data.header.headerTextUnderline //underline
+            slideHeader.style.color = e.data.header.headerTextColor //textColor
+            slideHeader.style.backgroundColor = e.data.header.headerTextBackgroundColor //textBackgroundColor
+            slideHeader.style.fontFamily = e.data.header.headerFont //font
+            slideHeader.style.fontSize = `${e.data.header.headerFontSize - 4}vw` //font size
+            slideHeader.style.marginLeft = e.data.header.headerPositionX +"px"// horizontal position
+            slideHeader.style.marginTop = e.data.header.headerPositionY +"px"// vertical position
+
+             //body
+            slideBody.textContent = e.data.body.bodyText
+            slideBody.style.textAlign = e.data.body.bodyTextAlign  //textAlign
+            slideBody.style.fontStyle = e.data.body.bodyTextItalics //text italics
+            slideBody.style.fontWeight = e.data.body.bodyTextBold  //text bold
+            slideBody.style.textDecoration = e.data.body.bodyTextUnderline //underline
+            slideBody.style.color = e.data.body.bodyTextColor //textColor
+            slideBody.style.backgroundColor = e.data.body.bodyTextBackgroundColor //textBackgroundColor
+            slideBody.style.fontFamily = e.data.body.bodyFont //font
+            slideBody.style.fontSize = e.data.body.bodyFontSize + "vw"//font size
+            slideBody.style.marginLeft = e.data.body.bodyPositionX +"px"// horizontal position
+            slideBody.style.marginTop = e.data.body.bodyPositionY + "px" // vertical position
+            
+        //background
+        slideBackground.style.className = e.data.background.backgroundAnimationClass
+        slideBackground.style.backgroundColor = e.data.background.backgroundColor
+            
+            }
+            //mess.close()
+        })
+         </script>
+        </body>
+</html>
