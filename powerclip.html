@@ -59,7 +59,7 @@
                   <span class="presets">
                     <button class="setTextAnimation1">basic</button>
                     <button class="setTextAnimation2">welcome</button>
-                    <button class="setTextAnimation3">Warm</button>
+                    <button class="setTextAnimation3">Cool</button>
                     <button class="setTextAnimation4">Warm</button>
                     <button class="setTextAnimation5">Warm</button>
                     <button class="setTextAnimation6">Warm</button>
@@ -269,14 +269,7 @@
           <section class="one" data-action="action1">
             <div class="collapsibleHeader"> 
               <button type="button" class="rename"></button>
-              <button type="menu" class="collapsible" contenteditable="true">Slide 1
-               <label class="switch">
-                 <input type="checkbox"  class="checkbox" id="1">
-                 <span class="slider round">
-                 </span>
-                 </label>
-               <span type="button">remove</span>
-     
+              <button type="menu" class="collapsible" contenteditable="true">
              </button>
              <span class="previewbtn" title="preview"><i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-display" viewBox="0 0 16 16">
                <path d="M0 4s0-2 2-2h12s2 0 2 2v6s0 2-2 2h-4c0 .667.083 1.167.25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75c.167-.333.25-.833.25-1.5H2s-2 0-2-2V4zm1.398-.855a.758.758 0 0 0-.254.302A1.46 1.46 0 0 0 1 4.01V10c0 .325.078.502.145.602.07.105.17.188.302.254a1.464 1.464 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.758.758 0 0 0 .254-.302 1.464 1.464 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.757.757 0 0 0-.302-.254A1.46 1.46 0 0 0 13.99 3H2c-.325 0-.502.078-.602.145z"/>
@@ -300,14 +293,14 @@
                    <span class="presets">
                      <button class="setTextAnimation1">basic</button>
                      <button class="setTextAnimation2">welcome</button>
-                     <button class="setTextAnimation3">Warm</button>
+                     <button class="setTextAnimation3">Cool</button>
                      <button class="setTextAnimation4">Warm</button>
                      <button class="setTextAnimation5">Warm</button>
                      <button class="setTextAnimation6">Warm</button>
                  </span>
                  </fieldset>
  
-                 <fieldset id="text">
+                 <fieldset id="text" style="display:none ;">
                    <legend for="text">Background Animation</legend>
                    <span class="presets2">
                      <button class="BackgroundAnimation1">basic</button>
@@ -317,7 +310,7 @@
                      <button class="BackgroundAnimation5">Warm</button>
                      <button class="BackgroundAnimation6">Warm</button>
                  </span>
-                 </fieldset>
+                     </fieldset>
                  
                  <fieldset id="text">
                    <legend for="text">Input Text</legend>
@@ -381,7 +374,11 @@
                          <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
                        </svg></i>
                      </span>
-                     
+                     <select title="font header" class="fontHeader" name="fontHeader">
+                       <option value="font1">Font1</option>
+                       <option value="font2">Font2</option>
+                       <option value="font3">Font3</option>
+                     </select>
                      </div>
  
                    <div class="formatText">
@@ -444,28 +441,25 @@
                          <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
                        </svg></i>
                      </span>
-                     
-                     </div>
-                   
- 
- 
-                   <div class="formatText2">
-                     <button data-jscolor="{preset:'dark', width:100, height:50, paletteCols:10, value:'rgba(51,112,255)', }" title="header color" class="headerTextColor"></button>
-                     <button data-jscolor="{preset:'dark', width:100, height:50, paletteCols:10, value:'rgba(51,153,255,)', }" title="header background-color" class="headerTextBackgroundColor"></button>
-                     <select title="font header" class="fontHeader" name="fontHeader">
-                       <option value="font1">Font1</option>
-                       <option value="font2">Font2</option>
-                       <option value="font3">Font3</option>
-                     </select>
                      <select title="font text" class="fontBody" name="fontBody">
                        <option value="font1">Font1</option>
                        <option value="font2">Font2</option>
                        <option value="font3">Font3</option>
                      </select>
-                     <button data-jscolor="{preset:'dark', width:100, height:50, paletteCols:10, value:'rgba(51,223,255)', }" title="text color" class="bodyTextColor"></button>
-                     <button data-jscolor="{preset:'dark', width:100, height:50, paletteCols:10, value:'rgba(51,02,255,)', }" title="text backgound-color" class="bodyTextBackgroundColor"></button>
+                     </div>
+                   
+ 
+ 
+                   <div class="formatText2">
+                     <input data-jscolor="{width:100, height:50, padding:5, borderRadius:3, borderWidth:1, controlBorderWidth:0, backgroundColor:'#1f1e1f', shadow:true, previewSize:20}" title="header background-color" class="headerTextColor">
+                     <input data-jscolor="{width:100, height:50, padding:5, borderRadius:3, borderWidth:1, controlBorderWidth:0, backgroundColor:'#1f1e1f',shadow:true, previewSize:20}" title="header background-color" class="headerTextBackgroundColor">
+                    
+                     <input data-jscolor="{width:100, height:50, padding:5, borderRadius:3, borderWidth:1, controlBorderWidth:0, backgroundColor:'#1f1e1f',shadow:true, previewSize:20}" title="text color" class="bodyTextColor">
+                     <input data-jscolor="{width:100, height:50, padding:5, borderRadius:3, borderWidth:1, controlBorderWidth:0, backgroundColor:'#1f1e1f',shadow:true, previewSize:20}" title="text backgound-color" class="bodyTextBackgroundColor">
                      
-                   </div>
+                     <input data-jscolor="{width:100, height:50, padding:5, borderRadius:3, borderWidth:1, controlBorderWidth:0, backgroundColor:'#1f1e1f',shadow:true, previewSize:30}" title="background-color" class="backgroundColor">
+                 </div>
+                 
                    <div class="headerColor">
                      <input type="header" class="headerTextInput">
                    </div>
@@ -473,16 +467,16 @@
                       <textarea placeholder="type your text here" class="bodyTextInput"></textarea>
                      </div>
                  <div class="memoryPane">
-                     <span type="radio" name="memory" class="memory1">1</span>
-                     <span type="radio" name="memory" class="memory2">2</span>
-                     <span type="radio" name="memory" class="memory3">3</span>
-                     <span type="radio" name="memory" class="memory4">4</span>
-                     <span type="radio" name="memory" class="memory5">5</span>
-                     <span type="radio" name="memory" class="memory6">6</span>
-                     <span type="radio" name="memory" class="memory7">7</span>
-                     <span type="radio" name="memory" class="memory8">8</span>
-                     <span type="radio" name="memory" class="memory9">9</span>
-                     <span type="radio" name="memory" class="memory10">10</span>
+                     <span type="radio" id="MP1" class="memory1">1</span>
+                     <span type="radio" id="MP1" class="memory2">2</span>
+                     <span type="radio" id="MP1" class="memory3">3</span>
+                     <span type="radio" id="MP1" class="memory4">4</span>
+                     <span type="radio" id="MP1" class="memory5">5</span>
+                     <span type="radio" id="MP1" class="memory6">6</span>
+                     <span type="radio" id="MP1" class="memory7">7</span>
+                     <span type="radio" id="MP1" class="memory8">8</span>
+                     <span type="radio" id="MP1" class="memory9">9</span>
+                     <span type="radio" id="MP1" class="memory10">10</span>
  
                      <button class="resetAllMemory">
                          <i><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">

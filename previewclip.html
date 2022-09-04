@@ -4,26 +4,36 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="css/animationLibrary.css"> 
 <style>
+    body{
+        background:black;
+        max-width: fit-content;
+        max-height: ;
+    }
     h1{
         background:rgb(0,0,0);
         margin:0;
         color:rgb(240, 255, 255);
         font-size: medium;
         text-align: center;
-        display:;
+        position:fixed;
+        z-index:1 ;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
     .watermark{
         color:rgb(240, 255, 255);
-        position: fixed;
+        position: absolute;
         text-align: ;
-        width: 100%;
+        top:0;
+        bottom: 0;
+        width: ;
+        left: 0;
+        right: 0;
         text-align: center;
-        vertical-align: middle;
         opacity:0.4;
         z-index:0;
-        display:;
-        font-size:calc(20vw - 14vh);
+        display:inline-block;
+        font-size:calc(20vh);
+        translate:0% 25%;
         letter-spacing:1vw;
         outline: none;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -95,9 +105,9 @@
             $slideHeader[i].style.backgroundColor = $allSlides[i].header.headerTextBackgroundColor //textBackgroundColor
             $slideHeader[i].style.fontFamily = $allSlides[i].header.headerFont //font
             $slideHeader[i].style.fontSize = `${$allSlides[i].header.headerFontSize - 4}vw` //font size
-            $slideHeader[i].style.marginLeft = $allSlides[i].header.headerPositionX +"px"// horizontal position
-            $slideHeader[i].style.marginTop = $allSlides[i].header.headerPositionY +"px"// vertical position
-
+           // $slideHeader[i].style.marginLeft = $allSlides[i].header.headerPositionX +"px"// horizontal position
+            $slideHeader[i].style.translate = `${$allSlides[i].header.headerPositionX} ${$allSlides[i].header.headerPositionY}`// horizontal%vertical position
+        
         //body
         $slideBody = document.querySelectorAll('.bodyText')
             $slideBody[i].textContent = $allSlides[i].body.bodyText
@@ -108,14 +118,14 @@
             $slideBody[i].style.color = $allSlides[i].body.bodyTextColor //textColor
             $slideBody[i].style.backgroundColor = $allSlides[i].body.bodyTextBackgroundColor //textBackgroundColor
             $slideBody[i].style.fontFamily = $allSlides[i].body.bodyFont //font
-            $slideBody[i].style.fontSize = $allSlides[i].body.bodyFontSize + "vw"//font size
-            $slideBody[i].style.marginLeft = $allSlides[i].body.bodyPositionX +"px"// horizontal position
-            $slideBody[i].style.marginTop = $allSlides[i].body.bodyPositionY + "px" // vertical position
-            console.log($slideBody[i].style.marginLeft)
+            $slideBody[i].style.fontSize = `calc(${$allSlides[i].body.bodyFontSize + 'vw'} - ${$allSlides[i].body.bodyFontSize + 'vh'} )` //font size
+            $slideBody[i].style.translate = `${$allSlides[i].body.bodyPositionX} ${$allSlides[i].body.bodyPositionY}`// horizontal%vertical position
+        
+           // console.log($slideBody[i].style.marginLeft)
         //background
         allSlidesBackground[i].style.className = $allSlides[i].background.backgroundAnimationClass
         allSlidesBackground[i].style.backgroundColor = $allSlides[i].background.backgroundColor
-        allSlidesBackground[i].style.display = $allSlides[i].background.backgroundDisplay
+       // allSlidesBackground[i].style.display = $allSlides[i].background.backgroundDisplay
             
 
     }

@@ -33,7 +33,7 @@ $collapsibleContent = document.querySelectorAll(".collapsibleContent")
             bodyTextColor:"",
             bodyTextBackgroundColor:"",
             bodyFont:"",
-            bodyFontSize:"",
+            bodyFontSize:"calculate(10vh + 5vw)",
             bodyPositionX:"0%",
             bodyPositionY:"25%"
         }
@@ -127,19 +127,13 @@ for(let i=0;i<$slides.length;i++){
         $setTextAnimationOneBtns[i].addEventListener('click',()=>{
             $allSlides[i].slideInfo.slideAnimationClass = 'basic';
             //localStorage.setItem(`Slide${i+1}.body.textAnimationClass`,'basic')
-           // console.log( $allSlides[i])
+            console.log( $allSlides[i])
         })
         //animation two 
         $setTextAnimationTwoBtns = document.querySelectorAll('.setTextAnimation2')
         $setTextAnimationTwoBtns[i].addEventListener('click',()=>{
             $allSlides[i].slideInfo.slideAnimationClass = 'welcome';
-            //console.log( $allSlides[i])
-        })
-         //animation three 
-        $setTextAnimationTwoBtns = document.querySelectorAll('.setTextAnimation3')
-        $setTextAnimationTwoBtns[i].addEventListener('click',()=>{
-            $allSlides[i].slideInfo.slideAnimationClass = 'cool';
-           // console.log( $allSlides[i])
+            console.log( $allSlides[i])
         })
         //backgroundColor
         $backgroundColor = document.querySelectorAll('.backgroundColor')
@@ -385,7 +379,7 @@ for(let i=0;i<$slides.length;i++){
              $bodyTextFontSizeIncrease = document.querySelectorAll('.bodyTextFontSizeIncrease')
              $bodyTextFontSizeIncrease[i].addEventListener('click',()=>{
                 bodyText++
-                 $allSlides[i].body.bodyFontSize = bodyText
+                 $allSlides[i].body.bodyFontSize = bodyText 
                  console.log( $allSlides[i])
              })
               //body text font size decrease
@@ -500,8 +494,6 @@ for(let i=0;i<$slides.length;i++){
                if(m2headerText||m2bodyText){
                    _headerText.value = m2headerText
                    _bodyText.value = m2bodyText 
-                       $allSlides[i].header.headerText = m2headerText
-                       $allSlides[i].body.bodyText = m2headerText
                }else{
                    localStorage.setItem(`m2headerText${i}`,_headerText.value)
                    localStorage.setItem(`m2bodyText${i}`,_bodyText.value)
@@ -717,11 +709,8 @@ for(let i=0;i<$slides.length;i++){
            }
            })
            //memory panes per slides
-           //$mp = document.querySelectorAll('#mp1')
-        
-           //reset memory button
-          // $resetMemoryBtns = document.querySelectorAll('.resetAllMemory');
-         
+           $mp = document.querySelectorAll('#mp1')
+
            
        setInterval(()=>{
         localStorage.setItem("allSlides",JSON.stringify($allSlides))
@@ -734,6 +723,7 @@ for(let i=0;i<$slides.length;i++){
       
         
     }
+
 
 
  

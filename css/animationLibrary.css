@@ -1,10 +1,11 @@
 body{
-    max-width:1920px;
-    max-height:1080px;
+    max-width:;
+    max-height:;
     overflow: ;
     background:none;
     padding:0;
     margin:0;    
+    aspect-ratio:16/9;
 }
 #slide{
     max-width: ;
@@ -17,7 +18,7 @@ body{
     color: rgb(194, 213, 229);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display:none;
-    
+    aspect-ratio:16/9;
 }
 #slideVideo{
     max-width: ;
@@ -28,32 +29,36 @@ body{
     height:100%;
     text-align:center;
     color: rgb(194, 213, 229);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+    aspect-ratio:16/9;
 }
 header{
-    margin-top:5px;
-    font-size:calc(10vw - 4vh);
+    font-size:calc(7vw);
     font-weight:;
     text-transform: uppercase;
     position: absolute;
     left:0;
     right:0;  
+    display:inline;
+    transition:0.5s ease-in;
+    translate:0% 0%;
 }
 .bodyText{
-    font-size:calc(5vw);
+    font-size:calc(20vw - 20vh);
     word-wrap: break-word;
-    margin-left:1vw;
-    margin-right:1vw;
-    margin-top:12vw;
+    margin-left:;
+    margin-right:;
+    margin-top:;
     position: absolute;
-    top:2vh;
+    top:0;
     left:0;
     right: 0;
     bottom: 0;
     text-align: center;
-    display:inline-block;
-    transition:margin 0.5s ease-in;
-    padding: 0;
+    display:inline;
+    transition:0.5s ease-in;
+    translate:0% 50%;
+    
 }
 #background{
     background:;
@@ -64,17 +69,18 @@ header{
 /*BASIC*/
 .basic{
     background:;
+    aspect-ratio:16/9;
 }
 .basic header{
-    animation: basicHeader 1s ease-out  1 normal forwards;
-    background:rgb(10, 90, 194);
-    display:inline-block;
+    animation: basicHeader 1s cubic-bezier(0.18, 0.89, 0.32, 1.28)  1 normal forwards;
+    background:;
+    display:inline;
     padding:0;
     transition:transform 1s ease-out, opacity 1s ease-in-out;
 }
 .basic p{
     animation: basicText 1s ease-in-out  1 normal forwards;
-    display: inline-block;
+    display: inline;
     height:fit-content;
     transition:transform 1s ease-out, opacity 1s ease-in-out;
 }
@@ -84,11 +90,19 @@ header{
 @keyframes basicText {
     0%{transform:translateX(100%); opacity:0;} 50%{transform:translateX(-5%);} 100%{transform:translateX(0%); opacity:1;}
 }
-
+.slide_exit,
+.slide_exit header,
+.slide_exit p{
+    animation: slide_exit 0.8s ease-in-out  normal forwards;
+}
+@keyframes slide_exit {
+    0%{opacity:1;} 50%{opacity:0.5;} 100%{opacity:0; display:none;}
+}
 /*welcome*/
 .welcome{
-    background:rgb(233, 51, 51);
+    background:;
     overflow: hidden;
+    aspect-ratio:16/9;
 }
 .welcome header{
     animation: welcomeHeader 1s ease-out  1 normal forwards;
@@ -99,7 +113,7 @@ header{
     transition:letter-spacing 1s ease-out, opacity 1s ease-in-out;
 }
 .welcome p{
-    animation: welcomeText 1s ease-in-out  1 normal forwards;
+    animation: welcomeText 1s cubic-bezier(0.65, 0.05, 0.36, 1)  1 normal forwards;
     display: inline-block;
     border: 2px solid rgb(233, 164, 164);
     border-top:none;
@@ -125,11 +139,43 @@ header{
     50%{ border-top: 2px solid rgb(251, 250, 250);border-bottom: 2px solid rgb(247, 247, 247);} 
     100%{width:100%; transform: rotate(0deg); opacity:1; border:none;}
 }
-.switchOffSlide{
-    display:none;
-}
+
 
 /*background*/
 .basic_background{
 
+}
+.cool{
+    background:red;
+    opacity:;
+    animation: coolText 2s ease-in  1 normal forwards;
+     transition:opacity 1s ease-in;
+    aspect-ratio:16/9;
+}
+.cool header{
+     animation: coolText 2s ease-in  1 normal forwards;
+    transition:opacity 1s ease-in;
+}
+.cool p{
+     animation: coolText 2s ease-in  1 normal forwards;
+    transition:opacity 1s ease-in;
+    color:blue;
+}
+@keyframes coolText {
+    0%{opacity:0; color:red;}
+    100%{opacity:1; }
+}
+
+.zoomIn{
+    
+}
+.zommIn header{
+    
+}
+.zoomIn p{
+    
+}
+@keyframes zoomIn {
+    0%{font-size:calc(40Vw-40vh);}
+    100%{font-size:auto;}
 }

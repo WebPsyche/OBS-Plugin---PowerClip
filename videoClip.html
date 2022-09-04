@@ -9,8 +9,8 @@
     <body>
 
         <div id="slideVideo" class="">
-            <header>Heading</header>
-            <p class="bodyText">Text</p>
+            <header></header>
+            <p class="bodyText"></p>
             <div id="background" class=""></div>
         </div>    
 
@@ -32,12 +32,12 @@
         const mess = new BroadcastChannel('show_video')
         const vidOff = new BroadcastChannel('hide_video') 
         mess.addEventListener('message',(e)=>{
-            //console.log(e.data.background)
+            //console.log(e.data)
             if(e.data==='off'){
-                
-                    slide.style.display = 'none'
-                
-            }else{
+                slide.className = "slide_exit"
+                slide.reset()
+               
+                }else{
             //slide stuff
             slide.className = e.data.slideInfo.slideAnimationClass
             slide.style.display = e.data.slideInfo.videoDisplay
@@ -51,8 +51,8 @@
             slideHeader.style.backgroundColor = e.data.header.headerTextBackgroundColor //textBackgroundColor
             slideHeader.style.fontFamily = e.data.header.headerFont //font
             slideHeader.style.fontSize = `${e.data.header.headerFontSize - 4}vw` //font size
-            slideHeader.style.marginLeft = e.data.header.headerPositionX +"px"// horizontal position
-            slideHeader.style.marginTop = e.data.header.headerPositionY +"px"// vertical position
+            slideHeader.style.translate = `${e.data.header.headerPositionX} ${e.data.header.headerPositionY}`// horizontal%vertical position
+        
 
              //body
             slideBody.textContent = e.data.body.bodyText
@@ -63,9 +63,8 @@
             slideBody.style.color = e.data.body.bodyTextColor //textColor
             slideBody.style.backgroundColor = e.data.body.bodyTextBackgroundColor //textBackgroundColor
             slideBody.style.fontFamily = e.data.body.bodyFont //font
-            slideBody.style.fontSize = e.data.body.bodyFontSize + "vw"//font size
-            slideBody.style.marginLeft = e.data.body.bodyPositionX +"px"// horizontal position
-            slideBody.style.marginTop = e.data.body.bodyPositionY + "px" // vertical position
+            slideBody.style.fontSize = `calc(${e.data.body.bodyFontSize + 'vw'} - ${e.data.body.bodyFontSize + 'vh'} )` //font size
+            slideBody.style.translate = `${e.data.body.bodyPositionX} ${e.data.body.bodyPositionY}`// horizontal%vertical position
             
         //background
         slideBackground.style.className = e.data.background.backgroundAnimationClass
