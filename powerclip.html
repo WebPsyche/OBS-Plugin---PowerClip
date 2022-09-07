@@ -13,14 +13,14 @@
       <button class="mode_button mode_lw3" onclick="setMode('lw3')">Lower thirds</button>
     </div>
     <!--slder name-->
-    <div id="slider_name_container">
+    <div class="slider_name_container">
       <input type="text" class="slide_name">
     </div>
      <!--slide aside-->
-     <div id="slide_aside">
-      <button id="slide_selector" class="slide_selector">1</button>
-      <button id="slide_selector" class="slide_selector">2</button>
-      <button id="slide_selector" class="slide_selector">3</button>
+     <div class="slide_aside">
+      <button class="slide_selector">1</button>
+      <button class="slide_selector">2</button>
+      <button class="slide_selector">3</button>
     </div>
       <!--slides-->
     <!--content panels-->
@@ -30,27 +30,69 @@
             <div class="slides">
                 <!--headertext formatting-->
                 <div class="header_text_formating">
-                  <span class="icons"></span>
-                  <span class="icons"></span>
-                  <span class="icons"></span>
-                  <span class="icons"></span>
+                  <span class="icons">
+                    <!--img icon-->
+                    <img src="icons/text-left.svg">
+                    <img src="icons/text-center.svg">
+                    <img src="icons/text-right.svg">
+                  </span>
+                    <!--img icon for position-->
+                    <span class="icons">
+                      <img src="icons/caret-left.svg">
+                      <input type="text" value="15">
+                      <img src="icons/caret-right.svg">
+                    </span>
+                       <span class="icons">
+                         <img src="icons/caret-up (1).svg">
+                         <input type="text" value="15">
+                         <img src="icons/caret-down (3).svg">
+                       </span>
+                          <span class="icons">
+                            <img src="icons/caret-up (1).svg">
+                            <input type="text" value="15">
+                            <img src="icons/caret-down (3).svg">
+                          </span>
                 </div>
                   <div class="header_text_color">
                     <input type="color">
-                    <input type="text">
+                    <input type="text" placeholder="header">
                     <input type="color">
                   </div>
                   <!--body text foromating-->
                      <div class="body_text_formating">
-                       <span class="icons"></span>
-                       <span class="icons"></span>
-                       <span class="icons"></span>
-                       <span class="icons"></span>
+                      <span class="icons">
+                        <!--img icon-->
+                        <img src="icons/text-left.svg">
+                        <img src="icons/text-center.svg">
+                        <img src="icons/text-right.svg">
+                      </span>
+                        <!--img icon for position-->
+                        <span class="icons">
+                          <img src="icons/caret-left.svg">
+                          <input type="text" value="15">
+                          <img src="icons/caret-right.svg">
+                        </span>
+                           <span class="icons">
+                             <img src="icons/caret-up (1).svg">
+                             <input type="text" value="15">
+                             <img src="icons/caret-down (3).svg">
+                           </span>
+                              <span class="icons">
+                                <img src="icons/caret-up (1).svg">
+                                <input type="text" value="15">
+                                <img src="icons/caret-down (3).svg">
+                              </span>
                      </div>
                      <div class="body_text_color">
-                       <input type="color">
-                       <textarea>&#xF5F0</textarea>
-                       <input type="color">
+                      <span>
+                          <input type="color">
+                          <img src="icons/fonts.svg">
+                      </span>
+                       <textarea placeholder="body"></textarea>
+                       <span>
+                         <input type="color">
+                         <img src="icons/fonts.svg">
+                       </span>
                      </div>
             </div>
         </div>
