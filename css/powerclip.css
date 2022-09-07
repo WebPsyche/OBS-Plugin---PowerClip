@@ -25,7 +25,7 @@ h1{
   display:flex;
   padding:1px;
 }
-#mode_button{
+.mode_button{
   color:white;
   background:#720e9e;
   width:50%;
@@ -34,11 +34,12 @@ h1{
   border:0;
   transition:0.2s ease-in;
 }
-#mode_button:hover{
+.mode_button:active{
   background: #a76dc0;
 }
-.mode_button_active{
+.modeActive{
   background: #2f0341;
+  text-shadow: #000000;
 }
 
 #slider_name_container{
