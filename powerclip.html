@@ -14,10 +14,8 @@
     </div>
      <!--slide aside-->
      <div class="slide_aside">
-      <button class="slide_selector">1</button>
-      <button class="slide_selector">2</button>
-      <button class="slide_selector">3</button>
-      <span class="add_slide">+</span>
+      <button class="slide_selector" onclick="select_slide()">1</button>
+      <span class="add_slide" onclick="add_new_slide()">+</span>
     </div>
       <!--slides-->
     <!--content panels-->
@@ -90,21 +88,27 @@
                      <div class="body_text_color">
                       <span>
                           <input type="color">
-                          <img src="icons/fonts.svg">
-                          <img src="icons/fonts.svg">
-                          <span class="fonts">fonts</span>
+                          <img src="icons/fonts.svg" onclick="openFontPanel()">
+                          <img src="icons/fonts.svg" onclick="openAnimationPanel()">
                       </span>
                        <textarea placeholder="body"></textarea>
                        <span>
                          <input type="color">
                          <img src="icons/fonts.svg">
-                      
-                         <span class="fonts">fonts
+                      <!--fonts-->
+                         <span class="fonts">
                           <option value="west">west</option>
                           <option value="west">west</option>
                           <option value="west">west</option>
                          </span>
                        </span>
+                       <!--animations-->
+                       <span class="animations">
+                        <button>warm</button>
+                        <button>warm</button>
+                        <button>warm</button>
+                        <button>warm</button>
+                      </span>
                      </div>
                       <!--momory panes-->
                       <div class="memory_panel">
@@ -119,6 +123,7 @@
                         <button>&</button>
                         <button>*</button>
                       </div>
+                      
             </div>
             
         </div>
@@ -127,7 +132,93 @@
           Sorry This Page is still under development
         </div>
          
-           
+<!--inline script-->
+<script>
+  //power clip 1.0
+
+//set function for the mode buttons
+function setMode(mode){
+    for(let i=0; i<1; i++){
+        document.querySelector('.slide_content').style.display = 'none'
+        document.querySelector('.lw3_content').style.display = 'none'
+        document.querySelector('.mode_slide').classList.remove('modeActive')
+        document.querySelector('.mode_lw3').classList.remove('modeActive')
+    }
+    document.querySelector(`.${mode}_content`).style.display = 'block'
+    document.querySelector(`.mode_${mode}`).classList.add('modeActive')
+
+}
+//open font panel
+function openFontPanel(){
+  let fontPanel =  document.querySelector('.fonts')
+    if(fontPanel.classList.contains('closeFont')){
+      fontPanel.classList.replace('closeFont','showFont');
+    }else{
+      fontPanel.classList.add('showFont')
+    }
+}
+//add eventlisterns to close font panel
+$fontPanelButtons = document.querySelector('.fonts option')
+$fontPanelButtons.addEventListener('click',()=>{
+  document.querySelector('.fonts').classList.replace('showFont','closeFont')
+})
+//open animation panel
+function openAnimationPanel(){
+  let animationPanel =  document.querySelector('.animations')
+    if(animationPanel.classList.contains('closeFont')){
+      animationPanel.classList.replace('closeFont','showFont');
+    }else{
+      animationPanel.classList.add('showFont')
+    }
+}
+//add eventlisterns to close animation panel
+$animationPanelButtons = document.querySelector('.animations button')
+$animationPanelButtons.addEventListener('click',()=>{
+  document.querySelector('.animations').classList.replace('showFont','closeFont')
+})
+//set slide counter
+var slideCount = document.querySelectorAll('.slide_selector').length
+//add new slide method
+function add_new_slide(){
+  //get slide lenght
+  slideCount++
+ // var slidelength = document.querySelectorAll('.slide_selector').length
+  //get original slide and clone it
+  var slide  = document.querySelector('.slides')
+  var slideContent = document.querySelector('.slide_content')
+  var newSlide = slide.cloneNode(true)
+  slideContent.appendChild(newSlide)
+  
+  //get slide counter and clone into it and append it to slide aside
+  var slideSelector = document.querySelector('.slide_selector')
+  var slideAside = document.querySelector('.slide_aside')
+  var newSlideSelector = slideSelector.cloneNode(true)
+  newSlideSelector.textContent = slideCount
+  slideAside.appendChild(newSlideSelector)
+  //update slide counter by increasing it
+  
+  console.log(slideCount)
+  //return (slidelength)
+}
+add_new_slide()
+//use the slide selector to display each slides
+var slide_selector = document.querySelectorAll('.slide_selector')
+var slides = document.querySelectorAll('.slides') 
+
+function select_slide(){
+//console.log(slideCount)
+}
+ for(let i = 0; i < slideCount; i ++){
+  slide_selector[i].addEventListener('click',()=>{
+    for(let x = 0; x < slideCount; x++){
+      slides[x].style.display = 'none'
+    }
+    slides[i].style.display = 'block'
+  })
+ }
+ document.querySelector(`.slide_content :nth-child(${slideCount})`).style.display = 'block'
+
+</script>           
 
         <script src="js/powerclip.js"></script>
   </body>
