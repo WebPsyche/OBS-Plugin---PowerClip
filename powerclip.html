@@ -3,7 +3,10 @@
   <head>
     <title>PowerClip</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="css/powerclip.css">
+    <script src="js/jquery.js"></script>
   </head>
   <body>
     <h1>PowerClip</h1>
@@ -14,129 +17,140 @@
     </div>
      <!--slide aside-->
      <div class="slide_aside">
-      <button class="slide_selector" onclick="select_slide()">1</button>
-      <span class="add_slide" onclick="add_new_slide()">+</span>
+      <template class="slide_selector_template">
+      <button class="slide_selector" onclick="select_slide(this)">1</button>
+      </template>
     </div>
+    <span class="add_slide" onclick="add_new_slide()">+</span>
       <!--slides-->
     <!--content panels-->
       <!--slide content-->
         <div id="slide_content" class="slide_content">
             <!--slides-->
-            <div class="slides">
-               <!--slder name-->
-                  <div class="slider_name_container">
-                    <input type="text" class="slide_name" placeholder="slide name">
-                    <img src="icons/camera-reels.svg">
-                    <img src="icons/tv.svg">
-                    </div>
-                    
-                <!--headertext formatting-->
-                <div class="header_text_formating">
-                  <span class="icons">
-                    <!--img icon-->
-                    <img src="icons/text-left.svg">
-                    <img src="icons/text-center.svg">
-                    <img src="icons/text-right.svg">
-                  </span>
-                    <!--img icon for position-->
-                    <span class="icons">
-                      <img src="icons/caret-left.svg">
-                      <input type="text" value="15">
-                      <img src="icons/caret-right.svg">
-                    </span>
-                       <span class="icons">
-                         <img src="icons/caret-up (1).svg">
-                         <input type="text" value="15">
-                         <img src="icons/caret-down (3).svg">
-                       </span>
-                          <span class="icons">
-                            <img src="icons/caret-up (1).svg">
-                            <input type="text" value="15">
-                            <img src="icons/caret-down (3).svg">
-                          </span>
-                </div>
-                  <div class="header_text_color">
-                    <input type="color">
-                    <input type="text" placeholder="header">
-                    <input type="color">
-                  </div>
-                  <!--body text foromating-->
-                     <div class="body_text_formating">
-                      <span class="icons">
-                        <!--img icon-->
-                        <img src="icons/text-left.svg">
-                        <img src="icons/text-center.svg">
-                        <img src="icons/text-right.svg">
-                      </span>
-                        <!--img icon for position-->
-                        <span class="icons">
-                          <img src="icons/caret-left.svg">
-                          <input type="text" value="15">
-                          <img src="icons/caret-right.svg">
-                        </span>
-                           <span class="icons">
-                             <img src="icons/caret-up (1).svg">
-                             <input type="text" value="15">
-                             <img src="icons/caret-down (3).svg">
-                           </span>
-                              <span class="icons">
-                                <img src="icons/caret-up (1).svg">
-                                <input type="text" value="15">
-                                <img src="icons/caret-down (3).svg">
-                              </span>
-                     </div>
-                     <div class="body_text_color">
-                      <span>
-                          <input type="color">
-                          <img src="icons/fonts.svg" onclick="openFontPanel()">
-                          <img src="icons/fonts.svg" onclick="openAnimationPanel()">
-                      </span>
-                       <textarea placeholder="body"></textarea>
-                       <span>
-                         <input type="color">
-                         <img src="icons/fonts.svg">
-                      <!--fonts-->
-                         <span class="fonts">
-                          <option value="west">west</option>
-                          <option value="west">west</option>
-                          <option value="west">west</option>
-                         </span>
-                       </span>
-                       <!--animations-->
-                       <span class="animations">
-                        <button>warm</button>
-                        <button>warm</button>
-                        <button>warm</button>
-                        <button>warm</button>
-                      </span>
-                     </div>
-                      <!--momory panes-->
-                      <div class="memory_panel">
-                        <button>1</button>
-                        <button>2</button>
-                        <button>3</button>
-                        <button>4</button>
-                        <button>5</button>
-                        <button>6</button>
-                        <button>7</button>
-                        <button>8</button>
-                        <button>&</button>
-                        <button>*</button>
-                      </div>
-                      
-            </div>
             
         </div>
         <!--l3rd content-->
         <div id="lw3_content" class="lw3_content">
           Sorry This Page is still under development
         </div>
-         
+       <!--template properties-->
+       <template class="slide_template">
+        <div class="slide0">
+           <!--slder name-->
+              <div class="slider_name_container">
+                <input type="text" class="slide_name" placeholder="slide name">
+                <img src="icons/camera-reels.svg">
+                <img src="icons/tv.svg">
+                </div>
+                
+            <!--headertext formatting-->
+            <div class="header_text_formating">
+              <span class="icons">
+                <!--img icon-->
+                <img src="icons/text-left.svg" title="text-left">
+                <img src="icons/text-center.svg" title="text-center">
+                <img src="icons/text-right.svg" title="text-right">
+              </span>
+                <!--img icon for position-->
+                <span class="icons">
+                  <img src="icons/caret-left.svg" title="positionX" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                  <input type="number" value="15" >
+                  <img src="icons/caret-right.svg" title="positionX" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                </span>
+                   <span class="icons">
+                     <img src="icons/caret-up (1).svg" title="positionY" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                     <input type="number" value="15">
+                     <img src="icons/caret-down (3).svg" title="positionY" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                   </span>
+                      <span class="icons">
+                        <img src="icons/caret-up (1).svg" title="font-size" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                        <input type="number" value="15">
+                        <img src="icons/caret-down (3).svg" title="font-size" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                      </span>
+            </div>
+              <div class="header_text_color">
+                <input type="color" title="text-color">
+                <input type="text" placeholder="header">
+                <input type="color" title="background-color">
+              </div>
+              <!--body text foromating-->
+                 <div class="body_text_formating">
+                  <span class="icons">
+                    <!--img icon-->
+                    <img src="icons/text-left.svg" title="text-left">
+                    <img src="icons/text-center.svg" title="text-center">
+                    <img src="icons/text-right.svg" title="text-right">
+                  </span>
+                    <!--img icon for position-->
+                    <span class="icons">
+                      <img src="icons/caret-left.svg" title="positionX" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                      <input type="number" value="15">
+                      <img src="icons/caret-right.svg" title="positionX" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                    </span>
+                       <span class="icons">
+                         <img src="icons/caret-up (1).svg" title="positionY" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                         <input type="number" value="15">
+                         <img src="icons/caret-down (3).svg" title="positionY" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                       </span>
+                          <span class="icons">
+                            <img src="icons/caret-up (1).svg" title="font-size" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                            <input type="number" value="15">
+                            <img src="icons/caret-down (3).svg" title="font-size" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                          </span>
+                 </div>
+                 <div class="body_text_color">
+                  <span>
+                      <input type="color" title="text-color">
+                      <img src="icons/fonts.svg" onclick="openFontPanel('header')">
+                      <img src="icons/fonts.svg" onclick="openFontPanel('body')">
+                  </span>
+                   <textarea placeholder="body"></textarea>
+                   <span>
+                     <input type="color" title="background-color">
+                     <img src="icons/fonts.svg"  onclick="openAnimationPanel()">
+                  <!--fonts-->
+                     <span class="fonts_header">
+                      <option value="west">header</option>
+                      <option value="west">header</option>
+                      <option value="west">header</option>
+                     </span>
+                     <span class="fonts_body">
+                      <option value="west">body</option>
+                      <option value="west">body</option>
+                      <option value="west">body</option>
+                     </span>
+                   </span>
+                   <!--animations-->
+                   <span class="animations">
+                    <button>warm</button>
+                    <button>warm</button>
+                    <button>warm</button>
+                    <button>warm</button>
+                  </span>
+                 </div>
+                  <!--momory panes-->
+                  <div class="memory_panel">
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
+                    <button>7</button>
+                    <button>8</button>
+                    <button>&</button>
+                    <button>*</button>
+                  </div>
+                  
+        </div>
+        </template>
+        <!--template properties-->
 <!--inline script-->
 <script>
   //power clip 1.0
 
 //set function for the mode buttons
+
 function setMode(mode){
     for(let i=0; i<1; i++){
         document.querySelector('.slide_content').style.display = 'none'
@@ -148,76 +162,67 @@ function setMode(mode){
     document.querySelector(`.mode_${mode}`).classList.add('modeActive')
 
 }
+//close font panel by default
 //open font panel
-function openFontPanel(){
-  let fontPanel =  document.querySelector('.fonts')
-    if(fontPanel.classList.contains('closeFont')){
-      fontPanel.classList.replace('closeFont','showFont');
-    }else{
-      fontPanel.classList.add('showFont')
-    }
+function openFontPanel(one){
+    $(".fonts_"+one).toggle(200,"linear")
+    $('.animations').hide(300,"linear")
+   
 }
-//add eventlisterns to close font panel
-$fontPanelButtons = document.querySelector('.fonts option')
-$fontPanelButtons.addEventListener('click',()=>{
-  document.querySelector('.fonts').classList.replace('showFont','closeFont')
-})
-//open animation panel
+
+////open animation panel
 function openAnimationPanel(){
-  let animationPanel =  document.querySelector('.animations')
-    if(animationPanel.classList.contains('closeFont')){
-      animationPanel.classList.replace('closeFont','showFont');
-    }else{
-      animationPanel.classList.add('showFont')
-    }
-}
+ $('.animations').toggle(200,"linear")
+ $(".fonts").hide(300,"linear")
+  }
+
 //add eventlisterns to close animation panel
-$animationPanelButtons = document.querySelector('.animations button')
-$animationPanelButtons.addEventListener('click',()=>{
-  document.querySelector('.animations').classList.replace('showFont','closeFont')
-})
+//$animationPanelButtons = document.querySelector('.animations button')
+//$animationPanelButtons.addEventListener('click',()=>{
+//  document.querySelector('.animations').classList.replace('showFont','closeFont')
+//})
+//document.querySelector('.animations').style.height = "100px"
 //set slide counter
 var slideCount = document.querySelectorAll('.slide_selector').length
+
+
 //add new slide method
+
+//get original slide and clone it
+//get slide lenght
 function add_new_slide(){
-  //get slide lenght
+  var slideCounts = document.querySelectorAll('.slide_selector').length
   slideCount++
- // var slidelength = document.querySelectorAll('.slide_selector').length
-  //get original slide and clone it
-  var slide  = document.querySelector('.slides')
-  var slideContent = document.querySelector('.slide_content')
-  var newSlide = slide.cloneNode(true)
-  slideContent.appendChild(newSlide)
+  const slide_template  = document.querySelector('.slide_template')
+  var cloneSlide = slide_template.cloneNode(true)
+  let newSlide = document.createElement("div")
+  newSlide.setAttribute('class','slides')
+  newSlide.innerHTML = cloneSlide.innerHTML
+  //var slideContent = document.querySelector('.slide_content')
+  document.querySelector(".slide_content").appendChild(newSlide)
   
   //get slide counter and clone into it and append it to slide aside
-  var slideSelector = document.querySelector('.slide_selector')
-  var slideAside = document.querySelector('.slide_aside')
-  var newSlideSelector = slideSelector.cloneNode(true)
+  const slide_selector_template  = document.querySelector('.slide_selector_template')
+  var cloneSlideSelector = slide_selector_template.cloneNode(true)
+  let newSlideSelector = document.createElement("button")
+  newSlideSelector.setAttribute('class','slide_selector')
+  newSlideSelector.setAttribute('onclick','select_slide(this)')
+  newSlideSelector.innerHTML = cloneSlideSelector.innerHTML
   newSlideSelector.textContent = slideCount
-  slideAside.appendChild(newSlideSelector)
-  //update slide counter by increasing it
-  
-  console.log(slideCount)
-  //return (slidelength)
+  $(".slide_aside").append(newSlideSelector)
+  $(".slide_aside :button").removeClass("slide_selector_active")
+  $(".slide_aside :last-child").addClass("slide_selector_active")
 }
 add_new_slide()
 //use the slide selector to display each slides
-var slide_selector = document.querySelectorAll('.slide_selector')
-var slides = document.querySelectorAll('.slides') 
-
-function select_slide(){
-//console.log(slideCount)
+function select_slide(num){
+  let x = $(num).index()
+  $(".slides").hide(300)
+  $(".slide_selector").removeClass("slide_selector_active")
+  $(`.slide_content :nth-child(${x})`).show(100)
+  $(`.slide_aside :nth-child(${x+1})`).addClass("slide_selector_active")
 }
- for(let i = 0; i < slideCount; i ++){
-  slide_selector[i].addEventListener('click',()=>{
-    for(let x = 0; x < slideCount; x++){
-      slides[x].style.display = 'none'
-    }
-    slides[i].style.display = 'block'
-  })
- }
- document.querySelector(`.slide_content :nth-child(${slideCount})`).style.display = 'block'
-
+ 
 </script>           
 
         <script src="js/powerclip.js"></script>
