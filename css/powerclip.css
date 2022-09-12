@@ -205,7 +205,8 @@ h1{
   color:white;
 }
 .header_text_color input,
-.body_text_color input{
+.body_text_color input,
+.js_color{
   height:20px;
   background:rgb(19, 19, 19);
   color:rgb(255, 255, 255);
