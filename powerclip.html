@@ -18,150 +18,199 @@
     </div>
      <!--slide aside-->
      <div class="slide_aside">
-      <template class="slide_selector_template">
-      <button class="slide_selector" onclick="select_slide(this)">1</button>
-      </template>
+      
     </div>
+    <!--slide aside ends here-->
     <span class="add_slide" onclick="add_new_slide()">+</span>
       <!--slides-->
     <!--content panels-->
-      <!--slide content-->
-        <div id="slide_content" class="slide_content">
+     <!--controls-->
+      
+ <!--slide content-->
+        <div id="slide_section" class="slide_section">
             <!--slides-->
-            
-        </div>
-        <!--l3rd content-->
-        <div id="lw3_content" class="lw3_content">
-          Sorry This Page is still under development
-        </div>
-       <!--template properties-->
-       <template class="slide_template">
-        <div class="slide0">
-           <!--slder name-->
-              <div class="slider_name_container">
-                <input type="text" class="slide_name" placeholder="slide name">
-                <img src="icons/camera-reels.svg">
-                <img src="icons/tv.svg">
-                </div>
-                
-            <!--headertext formatting-->
-            <div class="header_text_formating">
-              <span class="icons">
-                <!--img icon-->
-                <img src="icons/text-left.svg" title="text-left">
-                <img src="icons/text-center.svg" title="text-center">
-                <img src="icons/text-right.svg" title="text-right">
-              </span>
-                <!--img icon for position-->
-                <span class="icons">
-                  <img src="icons/caret-left.svg" title="positionX" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                  <input type="number" value="15" >
-                  <img src="icons/caret-right.svg" title="positionX" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                </span>
+            <div class="control">
+              <!--slder name-->
+              <div id="slide_name_info">
+                 <div class="slider_name_container">
+                  <!--slide name input-->
+                  </div>
+                  <div class="live_video">
+                   <img src="icons/camera-reels.svg">
+                   <img src="icons/tv.svg">
+                   </div>
+              </div>
+                   
+               <!--headertext formatting-->
+               <div class="header_text_formating">
+                 <span class="icons">
+                   <!--img icon-->
+                   <img src="icons/text-left.svg" title="text-left" onclick="textAlign('header','left')">
+                   <img src="icons/text-center.svg" title="text-center" onclick="textAlign('header','center')">
+                   <img src="icons/text-right.svg" title="text-right" onclick="textAlign('header','right')">
+                 </span>
+                   <!--img icon for position-->
                    <span class="icons">
-                     <img src="icons/caret-up (1).svg" title="positionY" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                     <input type="number" value="15">
-                     <img src="icons/caret-down (3).svg" title="positionY" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                     <img src="icons/caret-left.svg" title="positionX" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                     <input type="number" value="15" >
+                     <img src="icons/caret-right.svg" title="positionX" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                    </span>
                       <span class="icons">
-                        <img src="icons/caret-up (1).svg" title="font-size" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                        <img src="icons/caret-up (1).svg" title="positionY" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                         <input type="number" value="15">
-                        <img src="icons/caret-down (3).svg" title="font-size" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                        <img src="icons/caret-down (3).svg" title="positionY" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                       </span>
-            </div>
-            <div class="header_text_color">
-              <input type="submit" class="js_color" title="background-color" data-jscolor="{width:80, height:40, padding:5, borderRadius:5, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'bottom', shadow:true, previewSize:30}">
-              <input type="text" placeholder="header">
-              <input type="submit" class="js_color" title="background-color" data-jscolor="{width:80, height:40, padding:5, borderRadius:5, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'bottom', shadow:true, previewSize:30}">
-              </div>
-              <!--body text foromating-->
-                 <div class="body_text_formating">
-                  <span class="icons">
-                    <!--img icon-->
-                    <img src="icons/text-left.svg" title="text-left">
-                    <img src="icons/text-center.svg" title="text-center">
-                    <img src="icons/text-right.svg" title="text-right">
-                  </span>
-                    <!--img icon for position-->
-                    <span class="icons">
-                      <img src="icons/caret-left.svg" title="positionX" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                      <input type="number" value="15">
-                      <img src="icons/caret-right.svg" title="positionX" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                    </span>
+                         <span class="icons">
+                           <img src="icons/caret-up (1).svg" title="font-size" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                           <input type="number" value="15" onchange="fontSize(value)">
+                           <img src="icons/caret-down (3).svg" title="font-size" onclick="fontSize(this)">
+                         </span>
+               </div>
+               <div class="header_and_body_text_color">
+                <span class="header_font_and_animation">
+                    <img src="icons/fonts.svg"  onclick="openAnimationPanel()">
+                    <img src="icons/fonts.svg" onclick="openFontPanel('header')">
+                </span>
+                 <input type="submit" id="js_color" title="text-color" data-jscolor="{width:80, height:40, padding:5, borderRadius:5, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'bottom', shadow:true, previewSize:30}">
+                 <input type="submit" id="js_color" title="background-color" data-jscolor="{width:80, height:40, padding:5, borderRadius:5, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'bottom', shadow:true, previewSize:30}">
+                 <input type="submit" id="js_color" title="text-color" data-jscolor="{width:80, height:40, padding:5, borderRadius:5, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'bottom', shadow:true, previewSize:30}">
+                 <input type="submit" id="js_color" style="float:right;" title="background-color" data-jscolor="{width:80, height:40, padding:5, borderRadius:5, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'bottom', shadow:true, previewSize:30}">
+                 <span class="body_font_and_animation">
+                    <img src="icons/fonts.svg" onclick="openFontPanel('body')">
+                    <img src="icons/fonts.svg">    
+                 </span>            
+                </div>
+                 <!--body text foromating-->
+                    <div class="body_text_formating">
+                     <span class="icons">
+                       <!--img icon-->
+                       <img src="icons/text-left.svg" title="text-left" onclick="textAlign('body','left')">
+                       <img src="icons/text-center.svg" title="text-center" onclick="textAlign('body','center')">
+                       <img src="icons/text-right.svg" title="text-right" onclick="textAlign('body','right')">
+                     </span>
+                       <!--img icon for position-->
                        <span class="icons">
-                         <img src="icons/caret-up (1).svg" title="positionY" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                         <img src="icons/caret-left.svg" title="positionX" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                          <input type="number" value="15">
-                         <img src="icons/caret-down (3).svg" title="positionY" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                         <img src="icons/caret-right.svg" title="positionX" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                        </span>
                           <span class="icons">
-                            <img src="icons/caret-up (1).svg" title="font-size" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                            <img src="icons/caret-up (1).svg" title="positionY" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                             <input type="number" value="15">
-                            <img src="icons/caret-down (3).svg" title="font-size" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                            <img src="icons/caret-down (3).svg" title="positionY" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                           </span>
-                 </div>
-                 <div class="body_text_color">
-                  <span>
-                      <input type="color" title="text-color">
-                      <img src="icons/fonts.svg" onclick="openFontPanel('header')">
-                      <img src="icons/fonts.svg" onclick="openFontPanel('body')">
-                  </span>
-                   <textarea placeholder="body"></textarea>
-                   <span>
-                     <input type="color" title="background-color">
-                     <img src="icons/fonts.svg"  onclick="openAnimationPanel()">
-                  <!--fonts-->
-                     <span class="fonts_header">
-                      <option value="west">header</option>
-                      <option value="west">header</option>
-                      <option value="west">header</option>
+                             <span class="icons">
+                               <img src="icons/caret-up (1).svg" title="font-size" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                               <input type="number" value="15">
+                               <img src="icons/caret-down (3).svg" title="font-size" onclick="fontSize(this)">
+                             </span>
+                    </div>
+                    <!--font and animation container-->
+                    <div class="font_and_animation">
+                     
+                        <!--fonts for header-->
+                        <span class="fonts_header">
+                         <option value="west">header</option>
+                         <option value="west">header</option>
+                         <option value="west">header</option>
+                        </span>
+                        <!--fonts for body-->
+                        <span class="fonts_body">
+                         <option value="west">body</option>
+                         <option value="west">body</option>
+                         <option value="west">body</option>
+                        </span>
+                    
+                      <!--animations-->
+                      <span class="animations">
+                       <button>warm</button>
+                       <button>warm</button>
+                       <button>warm</button>
+                       <button>warm</button>
                      </span>
-                     <span class="fonts_body">
-                      <option value="west">body</option>
-                      <option value="west">body</option>
-                      <option value="west">body</option>
-                     </span>
-                   </span>
-                   <!--animations-->
-                   <span class="animations">
-                    <button>warm</button>
-                    <button>warm</button>
-                    <button>warm</button>
-                    <button>warm</button>
-                  </span>
-                 </div>
-                  <!--momory panes-->
-                  <div class="memory_panel">
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button>
-                    <button>4</button>
-                    <button>5</button>
-                    <button>6</button>
-                    <button>7</button>
-                    <button>8</button>
-                    <button>&</button>
-                    <button>*</button>
-                  </div>
-                  
+
+                    </div>
+                    <!--font and animation end here-->
+                    
+                     <!--momory panes-->
+                     <div class="memory_panel">
+                       <button>1</button>
+                       <button>2</button>
+                       <button>3</button>
+                       <button>4</button>
+                       <button>5</button>
+                       <button>6</button>
+                       <button>7</button>
+                       <button>8</button>
+                       <button>&</button>
+                       <button>*</button>
+                     </div>
+                     </div>
+           <!--slide control ends here-->
+           <!--slide container-->
+           <div class="slide_container">
+            <!--slides-->
+          
+
+             <!--slide hard codes ends here-->
+             </div>
+             <!--slide container ends here-->
+          
+          </div>
+          <!--slide section ends here-->
+
+         
+        <!--l3rd content-->
+        <div id="lw3_section" class="lw3_section">
+          Sorry This Page is still under development
+          <button onclick="check()">button</button>
         </div>
-        </template>
-        <!--template properties-->
+       <!--lower third ends here-->
+
 <!--inline script-->
 <script>
   //power clip 1.0
+
+  // slide information template emulator 
+class slideEmulator{
+    slide = {
+      name : null,
+      animation : null,
+    }
+    header = {
+      text : null,
+      color : null,
+      font : null,
+      size : null,
+      align : null,
+      positionX : null,
+      positionY : null,
+      backgroundColor : null,
+    }
+    body = {
+      text : null,
+      color : null,
+      font : null,
+      size : null,
+      align : null,
+      positionX : null,
+      positionY : null,
+      backgroundColor : null,
+    }
+  };
 
 //set function for the mode buttons
 
 function setMode(mode){
     for(let i=0; i<1; i++){
-        document.querySelector('.slide_content').style.display = 'none'
-        document.querySelector('.lw3_content').style.display = 'none'
+        document.querySelector('.slide_section').style.display = 'none'
+        document.querySelector('.lw3_section').style.display = 'none'
         document.querySelector('.mode_slide').classList.remove('modeActive')
         document.querySelector('.mode_lw3').classList.remove('modeActive')
     }
-    document.querySelector(`.${mode}_content`).style.display = 'block'
-    document.querySelector(`.mode_${mode}`).classList.add('modeActive')
-
+    var currentMode = document.querySelector(`.${mode}_section`)
+    currentMode.style.display = 'block'
+    currentMode.classList.add('modeActive');
 }
 //close font panel by default
 //open font panel
@@ -170,60 +219,83 @@ function openFontPanel(one){
     $('.animations').hide(300,"linear")
    
 }
-
-////open animation panel
+//open animation panel
 function openAnimationPanel(){
  $('.animations').toggle(200,"linear")
- $(".fonts").hide(300,"linear")
+ $(".fonts_header").hide(300,"linear")
   }
-
-//add eventlisterns to close animation panel
-//$animationPanelButtons = document.querySelector('.animations button')
-//$animationPanelButtons.addEventListener('click',()=>{
-//  document.querySelector('.animations').classList.replace('showFont','closeFont')
-//})
-//document.querySelector('.animations').style.height = "100px"
-//set slide counter
-var slideCount = document.querySelectorAll('.slide_selector').length
-
-
-//add new slide method
-
-//get original slide and clone it
-//get slide lenght
+  //current slide indicator
+  var currentSlide ;
+  //array of all slides
+  let allSlides = []
+// function for adding new slide
 function add_new_slide(){
   var slideCounts = document.querySelectorAll('.slide_selector').length
-  slideCount++
-  const slide_template  = document.querySelector('.slide_template')
-  var cloneSlide = slide_template.cloneNode(true)
-  let newSlide = document.createElement("div")
-  newSlide.setAttribute('class','slides')
-  newSlide.innerHTML = cloneSlide.innerHTML
-  //var slideContent = document.querySelector('.slide_content')
-  document.querySelector(".slide_content").appendChild(newSlide)
-  
+  let newSlide = document.createElement("div");
+  let headerInput = document.createElement("input")
+  let textInput = document.createElement("textarea")
+  headerInput.setAttribute('type','text');
+  headerInput.setAttribute('placeholder','header');
+  textInput.setAttribute('placeholder','body');
+  newSlide.setAttribute('class','slides');
+  newSlide.appendChild(headerInput);
+  newSlide.appendChild(textInput);
+  document.querySelector(".slide_container").appendChild(newSlide)
+
+  let newSlideName = document.createElement("input")
+  newSlideName.setAttribute('type','text')
+  newSlideName.setAttribute('class','slide_name')
+  newSlideName.setAttribute('placeholder',`slide  ${slideCounts + 1}`)
+  document.querySelector(".slider_name_container").appendChild(newSlideName)
+
   //get slide counter and clone into it and append it to slide aside
-  const slide_selector_template  = document.querySelector('.slide_selector_template')
-  var cloneSlideSelector = slide_selector_template.cloneNode(true)
   let newSlideSelector = document.createElement("button")
   newSlideSelector.setAttribute('class','slide_selector')
   newSlideSelector.setAttribute('onclick','select_slide(this)')
-  newSlideSelector.innerHTML = cloneSlideSelector.innerHTML
-  newSlideSelector.textContent = slideCount
+  newSlideSelector.textContent = slideCounts + 1;
+  currentSlide = slideCounts + 1
   $(".slide_aside").append(newSlideSelector)
   $(".slide_aside :button").removeClass("slide_selector_active")
   $(".slide_aside :last-child").addClass("slide_selector_active")
+
+  allSlides.push(new slideEmulator);
 }
 add_new_slide()
 //use the slide selector to display each slides
 function select_slide(num){
   let x = $(num).index()
-  $(".slides").hide(300)
+  $(".slides").hide(200,"swing");
+  $(".slide_name").hide()
   $(".slide_selector").removeClass("slide_selector_active")
-  $(`.slide_content :nth-child(${x})`).show(100)
+  $(`.slide_container :nth-child(${x+1})`).show(100,"swing")
+  $(`.slider_name_container :nth-child(${x+1})`).show()
   $(`.slide_aside :nth-child(${x+1})`).addClass("slide_selector_active")
+  currentSlide = (x + 1);
+  
+  console.log(allSlides[x])
 }
- 
+
+
+//text align function 
+function textAlign(part,textAlign){
+  let cslide = allSlides[currentSlide-1]
+  if (part === "header"){
+    document.querySelector(`.slide_container :nth-child(${currentSlide}) input`).style.textAlign = textAlign;
+    cslide.header.align = textAlign
+    console.log(cslide.header) 
+  }else if (part === "body"){
+    document.querySelector(`.slide_container :nth-child(${currentSlide}) textarea`).style.textAlign = textAlign;
+    cslide.body.align = textAlign
+    console.log(cslide.body)
+  }
+}
+//fontsize function
+function fontSize(the){
+  the.parentNode.querySelector('input[type="number"]').stepDown();
+}
+function check(){
+  console.log(allSlides)
+}
 </script>           
 
         <script src="js/powerclip.js"></script>
