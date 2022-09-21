@@ -134,7 +134,7 @@
                     
                      <!--momory panes-->
                      <div class="memory_panel">
-                       <button onclick="memory()">1</button>
+                       <button onclick="memory('m1')">1</button>
                        <button>2</button>
                        <button>3</button>
                        <button>4</button>
@@ -364,17 +364,20 @@ function color(colorInput,part){
 	console.log(cslide);
 }
 //function for memory
-function memory(){
+function memory(memory){
 	let cslide = allSlides[currentSlide-1];
 	_headerInput = document.querySelector(`.slide_container :nth-child(${currentSlide}) input`).value;
-	_textInput = document.querySelector(`.slide_container :nth-child(${currentSlide}) textarea`).value;
-	_getLocalMemory;
-	_setLocalMemory
-	if (_headerInput === '' && _textInput === ''){
-		if(_getLocalMemory){
-			
+	_bodyInput = document.querySelector(`.slide_container :nth-child(${currentSlide}) textarea`).value;
+	_getLocalMemory = localStorage.getItem(`${memory}[S${currentSlide}]`);
+	//var decrypted_getLocalMemory = decrypt(_getLocalMemory);
+	_setLocalMemory  = localStorage.setItem(`${memory}[S${currentSlide}]`,'{ header:"asd"}')
+	if (_headerInput === '' && _bodyInput === ''){
+		if(_getLocalMemory || _setLocalMemory){
+			_headerInput = _getLocalMemory
 		}
 	}
+	_headerInput = _getLocalMemory
+	console.log(JSON.stringify(_getLocalMemory))
 }
 //encrypt information
 function encrypt (encrypt){
