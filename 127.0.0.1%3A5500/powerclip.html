@@ -134,7 +134,7 @@
                     
                      <!--momory panes-->
                      <div class="memory_panel">
-                       <button>1</button>
+                       <button onclick="memory()">1</button>
                        <button>2</button>
                        <button>3</button>
                        <button>4</button>
@@ -346,7 +346,6 @@ function textInput(part,textInput){
 	}else if (textInput === 'body'){
 		cslide.body.text = text;
 	}
-	console.log(cslide)
 }
 
 //function for color
@@ -363,6 +362,27 @@ function color(colorInput,part){
 		cslide.body.backgroundColor = color;
 	}
 	console.log(cslide);
+}
+//function for memory
+function memory(){
+	let cslide = allSlides[currentSlide-1];
+	_headerInput = document.querySelector(`.slide_container :nth-child(${currentSlide}) input`).value;
+	_textInput = document.querySelector(`.slide_container :nth-child(${currentSlide}) textarea`).value;
+	_getLocalMemory;
+	_setLocalMemory
+	if (_headerInput === '' && _textInput === ''){
+		if(_getLocalMemory){
+			
+		}
+	}
+}
+//encrypt information
+function encrypt (encrypt){
+	return window.btoa(encrypt);
+}
+// decrypt information
+function decrypt (decrypt){
+	return window.atob(decrypt);
 }
 function check(){
   console.log(allSlides)
