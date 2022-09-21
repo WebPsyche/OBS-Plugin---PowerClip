@@ -206,6 +206,10 @@ h1{
 }
 #js_color{
   height:10px;
+  width:27px;
+  font-size:7px;
+  font-weight:bold;
+  padding:0;
   margin:0;
   border:2px solid black;
   cursor: pointer;
