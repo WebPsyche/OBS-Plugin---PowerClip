@@ -71,10 +71,10 @@
                     <img src="icons/fonts.svg"  onclick="openAnimationPanel()">
                     <img src="icons/fonts.svg" onclick="openFontPanel('header')">
                 </span>
-                 <input type="submit" id="js_color" title="text-color" data-jscolor="{width:80, height:40, padding:5, borderRadius:5, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'bottom', shadow:true, previewSize:30}">
-                 <input type="submit" id="js_color" title="background-color" data-jscolor="{width:80, height:40, padding:5, borderRadius:5, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'bottom', shadow:true, previewSize:30}">
-                 <input type="submit" id="js_color" title="text-color" data-jscolor="{width:80, height:40, padding:5, borderRadius:5, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'bottom', shadow:true, previewSize:30}">
-                 <input type="submit" id="js_color" style="float:right;" title="background-color" data-jscolor="{width:80, height:40, padding:5, borderRadius:5, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'bottom', shadow:true, previewSize:30}">
+                 <input type="text" id="js_color" oninput="color(value,'header')" title="header text color" data-jscolor="{width:80, height:40, padding:5, borderRadius:5, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'bottom', shadow:true, previewSize:30}">
+                 <input type="text" id="js_color" oninput="color(value,'headerBg')" title="header background-color" data-jscolor="{width:80, height:40, padding:5, borderRadius:5, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'bottom', shadow:true, previewSize:30}">
+                 <input type="text" id="js_color" oninput="color(value,'bodyBg')" title="text background-color" data-jscolor="{width:80, height:40, padding:5, borderRadius:5, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'bottom', shadow:true, previewSize:30}">
+                 <input type="text" id="js_color" oninput="color(value,'body')" style="float:right;" title="body text color" data-jscolor="{width:80, height:40, padding:5, borderRadius:5, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'bottom', shadow:true, previewSize:30}">
                  <span class="body_font_and_animation">
                     <img src="icons/fonts.svg" onclick="openFontPanel('body')">
                     <img src="icons/fonts.svg">    
@@ -134,7 +134,7 @@
                     
                      <!--momory panes-->
                      <div class="memory_panel">
-                       <button>1</button>
+                       <button onclick="memory('m1')">1</button>
                        <button>2</button>
                        <button>3</button>
                        <button>4</button>
@@ -236,7 +236,9 @@ function add_new_slide(){
   let textInput = document.createElement("textarea")
   headerInput.setAttribute('type','text');
   headerInput.setAttribute('placeholder','header');
+  headerInput.setAttribute('onchange', "textInput(event,'header')")
   textInput.setAttribute('placeholder','body');
+  textInput.setAttribute('onchange', "textInput(event,'body')")	
   newSlide.setAttribute('class','slides');
   newSlide.appendChild(headerInput);
   newSlide.appendChild(textInput);
@@ -281,12 +283,10 @@ function textAlign(part,textAlign){
   let cslide = allSlides[currentSlide-1]
   if (part === "header"){
     document.querySelector(`.slide_container :nth-child(${currentSlide}) input`).style.textAlign = textAlign;
-    cslide.header.align = textAlign
-    console.log(cslide.header) 
+    cslide.header.align = textAlign;
   }else if (part === "body"){
     document.querySelector(`.slide_container :nth-child(${currentSlide}) textarea`).style.textAlign = textAlign;
-    cslide.body.align = textAlign
-    console.log(cslide.body)
+    cslide.body.align = textAlign;
   }
 }
 // position function
@@ -337,9 +337,134 @@ function fontSize(type,part){
     cslide.body.size = types.value
   }
 }
+// text input function
+function textInput(part,textInput){
+	let cslide = allSlides[currentSlide-1];
+	let text = part.target.value;
+	if (textInput === 'header'){
+		cslide.header.text = text;
+	}else if (textInput === 'body'){
+		cslide.body.text = text;
+	}
+}
 
+//function for color
+function color(colorInput,part){
+	let cslide = allSlides[currentSlide-1];
+	let color  = colorInput;
+	if (part === 'header'){
+		cslide.header.color = color;
+	}else if(part === 'headerBg'){
+		cslide.header.backgroundColor = color;
+	}else if (part === 'body'){
+		cslide.body.color = color;
+	}else if (part === 'bodyBg'){
+		cslide.body.backgroundColor = color;
+	}
+	console.log(cslide);
+}
+//function for memory
+function memory(memory){
+	let cslide = allSlides[currentSlide-1];
+	_headerInput = document.querySelector(`.slide_container :nth-child(${currentSlide}) input`);
+	_bodyInput = document.querySelector(`.slide_container :nth-child(${currentSlide}) textarea`);
+	slide = {header:null, body:null}
+	var stringify = JSON.stringify(slide)
+	var encrypted_setMemory = encrypt(stringify)
+	var setLocalMemory  = localStorage.setItem(`${memory}[S${currentSlide}]`, encrypted_setMemory);
+	var getLocalMemory = localStorage.getItem(`${memory}[S${currentSlide}]`);
+	var decrypted_getLocalMemory = decrypt(getLocalMemory);
+	var parse_getLocalMemory = JSON.parse(decrypted_getLocalMemory);
+	
+	function setLocalMemory (slide){
+		 stringify = JSON.stringify(slide)
+		 encrypted_setMemory = encrypt(stringify)
+		 setLocalMemory  = localStorage.setItem(`${memory}[S${currentSlide}]`, encrypted_setMemory);
+	}
+	function getLocalMemory() {
+		getLocalMemory = localStorage.getItem(`${memory}[S${currentSlide}]`);
+		decrypted_getLocalMemory = decrypt(getLocalMemory);
+		parse_getLocalMemory = JSON.parse(decrypted_getLocalMemory);
+	}
+	
+	if (_headerInput.value === '' && _bodyInput.value === ''){
+		//getLocalMemory()
+		
+		if(getLocalMemory || setLocalMemory){
+			//getLocalMemory()
+			_headerInput.value = parse_getLocalMemory.header;
+			_bodyInput.value = parse_getLocalMemory.body;
+		}else{
+			window.alert('no text!');
+			console.log('no text')
+		}
+	}else{
+		//getLocalMemory()
+		
+			if(getLocalMemory || setLocalMemory){
+				_headerInput.value = parse_getLocalMemory.header;
+				_bodyInput.value = parse_getLocalMemory.body;
+			}else{
+				slide.header = _headerInput.value;
+				slide.body = _bodyInput.value;
+				setLocalMemory(slide);
+			}
+		}
+	
+	_headerInput = getLocalMemory
+	console.log(parse_getLocalMemory)
+}
+//encrypt information
+function encrypt (encrypt){
+	return window.btoa(encrypt);
+}
+// decrypt information
+function decrypt (decrypt){
+	return window.atob(decrypt);
+}
+function check(){
+  console.log(allSlides) 
+}
 </script>           
 
         <script src="js/powerclip.js"></script>
-  </body>
+  <!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
   </html>
