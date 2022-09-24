@@ -298,6 +298,9 @@ h1{
 .memory_panel button:active,:focus{
   background-image: linear-gradient(180deg,#310444,rgb(0,0,0));
 }
+.memory_panel_active{
+  color:#f50bf5;
+}
 /*font and animation container*/
 .body_font_and_animation{
   position:relative;

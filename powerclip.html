@@ -21,7 +21,7 @@
       
     </div>
     <!--slide aside ends here-->
-    <span class="add_slide" onclick="add_new_slide()">+</span>
+    <span class="add_slide" onclick="add_new_slide()" title="add slide">+</span>
       <!--slides-->
     <!--content panels-->
      <!--controls-->
@@ -52,17 +52,17 @@
                    <!--img icon for position-->
                    <span class="icons">
                      <img src="icons/caret-left.svg" title="positionX" onclick="position(this,'headerPositionX+')">
-                     <input type="number" value="15" >
+                     <input type="number" value="15" oninput="position(this,'headerPositionX')">
                      <img src="icons/caret-right.svg" title="positionX" onclick="position(this,'headerPositionX-')">
                    </span>
                       <span class="icons">
                         <img src="icons/caret-up (1).svg" title="positionY" onclick="position(this,'headerPositionY+')">
-                        <input type="number" value="15">
+                        <input type="number" value="15" oninput="position(this,'headerPositionY')">
                         <img src="icons/caret-down (3).svg" title="positionY" onclick="position(this,'headerPositionY-')">
                       </span>
                          <span class="icons">
                            <img src="icons/caret-up (1).svg" title="font-size" onclick="fontSize(this,'headerFont+')">
-                           <input type="number" value="15" onchange="fontSize(value)">
+                           <input type="number" value="15" oninput="fontSize(this,'headerFont')">
                            <img src="icons/caret-down (3).svg" title="font-size" onclick="fontSize(this,'headerFont-')">
                          </span>
                </div>
@@ -91,17 +91,17 @@
                        <!--img icon for position-->
                        <span class="icons">
                          <img src="icons/caret-left.svg" title="positionX" onclick="position(this,'bodyPositionX+')">
-                         <input type="number" value="15">
+                         <input type="number" value="15" oninput="position(this,'bodyPositionX')">
                          <img src="icons/caret-right.svg" title="positionX" onclick="position(this,'bodyPositionX-')">
                        </span>
                           <span class="icons">
                             <img src="icons/caret-up (1).svg" title="positionY" onclick="position(this,'bodyPositionY+')">
-                            <input type="number" value="15">
+                            <input type="number" value="15" oninput="position(this,'bodyPositionY')">
                             <img src="icons/caret-down (3).svg" title="positionY" onclick="position(this,'bodyPositionY-')">
                           </span>
                              <span class="icons">
                                <img src="icons/caret-up (1).svg" title="font-size" onclick="fontSize(this,'bodyFont+')">
-                               <input type="number" value="15">
+                               <input type="number" value="15" oninput="fontSize(this,'bodyFont')">
                                <img src="icons/caret-down (3).svg" title="font-size" onclick="fontSize(this,'bodyFont-')">
                              </span>
                     </div>
@@ -134,16 +134,16 @@
                     
                      <!--momory panes-->
                      <div class="memory_panel">
-                       <button onclick="memory('m1')">1</button>
-                       <button>2</button>
-                       <button>3</button>
-                       <button>4</button>
-                       <button>5</button>
-                       <button>6</button>
-                       <button>7</button>
-                       <button>8</button>
-                       <button>&</button>
-                       <button>*</button>
+                       <button onclick="memory(this)" title="memory 1">1</button>
+                       <button onclick="memory(this)" title="memory 2">2</button>
+                       <button onclick="memory(this)" title="memory 3">3</button>
+                       <button onclick="memory(this)" title="memory 4">4</button>
+                       <button onclick="memory(this)" title="memory 5">5</button>
+                       <button onclick="memory(this)" title="memory 6">6</button>
+                       <button onclick="memory(this)" title="memory 7">7</button>
+                       <button onclick="memory(this)" title="memory 8">8</button>
+                       <button onclick="memory(this)" title="reset memory">&</button>
+                       <button onclick="memory(this)" title="clear memory">*</button>
                      </div>
                      </div>
            <!--slide control ends here-->
@@ -163,7 +163,6 @@
         <!--l3rd content-->
         <div id="lw3_section" class="lw3_section">
           Sorry This Page is still under development
-          <button onclick="check()">button</button>
         </div>
        <!--lower third ends here-->
 
@@ -236,9 +235,9 @@ function add_new_slide(){
   let textInput = document.createElement("textarea")
   headerInput.setAttribute('type','text');
   headerInput.setAttribute('placeholder','header');
-  headerInput.setAttribute('onchange', "textInput(event,'header')")
+  headerInput.setAttribute('oninput', "textInput(event,'header')")
   textInput.setAttribute('placeholder','body');
-  textInput.setAttribute('onchange', "textInput(event,'body')")	
+  textInput.setAttribute('oninput', "textInput(event,'body')")	
   newSlide.setAttribute('class','slides');
   newSlide.appendChild(headerInput);
   newSlide.appendChild(textInput);
@@ -253,6 +252,7 @@ function add_new_slide(){
   //get slide counter and clone into it and append it to slide aside
   let newSlideSelector = document.createElement("button")
   newSlideSelector.setAttribute('class','slide_selector')
+  newSlideSelector.setAttribute('title', `slide ${slideCounts + 1}`)
   newSlideSelector.setAttribute('onclick','select_slide(this)')
   newSlideSelector.textContent = slideCounts + 1;
   currentSlide = slideCounts + 1
@@ -261,6 +261,7 @@ function add_new_slide(){
   $(".slide_aside :last-child").addClass("slide_selector_active")
 
   allSlides.push(new slideEmulator);
+  //set_slide_info_to_storage(allSlides[currentSlide-1])
 }
 add_new_slide()
 //use the slide selector to display each slides
@@ -273,10 +274,14 @@ function select_slide(num){
   $(`.slider_name_container :nth-child(${x+1})`).show()
   $(`.slide_aside :nth-child(${x+1})`).addClass("slide_selector_active")
   currentSlide = (x + 1);
-  
-  console.log(allSlides[x])
+  set_slide_info_to_storage(allSlides[x])
 }
-
+//set slide to localstorage
+function set_slide_info_to_storage (slideInfo){
+  var stringifySlide = JSON.stringify(slideInfo)
+  var encryptSlide = encrypt(stringifySlide)
+  localStorage.setItem("setSlide",encryptSlide);
+}
 
 //text align function 
 function textAlign(part,textAlign){
@@ -288,6 +293,7 @@ function textAlign(part,textAlign){
     document.querySelector(`.slide_container :nth-child(${currentSlide}) textarea`).style.textAlign = textAlign;
     cslide.body.align = textAlign;
   }
+  set_slide_info_to_storage(cslide);
 }
 // position function
 function position (type,position){
@@ -296,11 +302,15 @@ function position (type,position){
   if(position === 'headerPositionX+'){
     types.stepUp();
     cslide.header.positionX = types.value
+  }else if(position === "headerPositionX"){
+    cslide.header.positionX = types.value
   }else if(position === 'headerPositionX-'){
     types.stepDown();
     cslide.header.positionX = types.value
   }else if(position === 'headerPositionY+'){
     types.stepUp();
+    cslide.header.positionY = types.value
+  }else if(position === "headerPositionY"){
     cslide.header.positionY = types.value
   }else if(position === 'headerPositionY-'){
     types.stepDown();
@@ -308,16 +318,21 @@ function position (type,position){
   }else if(position === 'bodyPositionX+'){
     types.stepUp();
     cslide.body.positionX = types.value
+  }else if(position === "bodyPositionX"){
+    cslide.body.positionX = types.value
   }else if(position === 'bodyPositionX-'){
     types.stepDown();
     cslide.body.positionX = types.value
   }else if(position === 'bodyPositionY+'){
     types.stepUp();
     cslide.body.positionY = types.value
+  }else if(position === "bodyPositionY"){
+    cslide.body.positionY = types.value
   }else if(position === 'bodyPositionY-'){
     types.stepDown();
     cslide.body.positionY = types.value
   }
+  set_slide_info_to_storage(cslide);
 }
 //fontsize function
 function fontSize(type,part){
@@ -326,16 +341,23 @@ function fontSize(type,part){
   if(part === 'headerFont+'){
     types.stepUp();
     cslide.header.size = types.value
+  }else if(part === "headerFont"){
+    cslide.header.size = types.value
   }else if(part === 'headerFont-'){
     types.stepDown();
     cslide.header.size = types.value
   }else if(part === 'bodyFont+'){
     types.stepUp();
     cslide.body.size = types.value
+  }else if(part === "bodyFont"){
+    cslide.body.size = types.value
   }else if(part === 'bodyFont-'){
     types.stepDown();
     cslide.body.size = types.value
   }
+
+  
+  set_slide_info_to_storage(cslide);
 }
 // text input function
 function textInput(part,textInput){
@@ -346,6 +368,7 @@ function textInput(part,textInput){
 	}else if (textInput === 'body'){
 		cslide.body.text = text;
 	}
+  set_slide_info_to_storage(cslide);
 }
 
 //function for color
@@ -361,61 +384,77 @@ function color(colorInput,part){
 	}else if (part === 'bodyBg'){
 		cslide.body.backgroundColor = color;
 	}
-	console.log(cslide);
+  set_slide_info_to_storage(cslide);
 }
 //function for memory
-function memory(memory){
+function memory(memoryObj){
+  const memory = memoryObj.textContent
 	let cslide = allSlides[currentSlide-1];
 	_headerInput = document.querySelector(`.slide_container :nth-child(${currentSlide}) input`);
 	_bodyInput = document.querySelector(`.slide_container :nth-child(${currentSlide}) textarea`);
 	slide = {header:null, body:null}
-	//var stringify = JSON.stringify(slide)
-	//var encrypted_setMemory = encrypt(stringify)
-	//var setLocalMemory  = localStorage.setItem(`${memory}[S${currentSlide}]`, encrypted_setMemory);
-	var getLocalMemory = localStorage.getItem(`${memory}[S${currentSlide}]`);
-	//var decrypted_getLocalMemory = decrypt(getLocalMemory);
-	//var parse_getLocalMemory = JSON.parse(decrypted_getLocalMemory);
-	//var LM = parse_getLocalMemory
+	var getLocalMemory = localStorage.getItem(`m${memory}[S${currentSlide}]`);
 	
 	function setLocalMemory (localMemory){
 		 var stringify = JSON.stringify(localMemory)
 		 var encrypted_setMemory = encrypt(stringify)
-		 localStorage.setItem(`${memory}[S${currentSlide}]`, encrypted_setMemory);
+		 localStorage.setItem(`m${memory}[S${currentSlide}]`, encrypted_setMemory);
 	}
 	function getMemory(localMemory) {
 		var decrypted_getLocalMemory = decrypt(localMemory);
 		var parse_getLocalMemory = JSON.parse(decrypted_getLocalMemory);
-		return localMemory = parse_getLocalMemory
+		memo = parse_getLocalMemory
+		return memo
 	}
-	
+  var memory_panel = document.querySelector(".memory_panel")
+  var memory_panel_length = memory_panel.children.length;
+  //color for memory panel
+  for (let q = 0; q < memory_panel_length; q++){
+      memory_panel.children[q].style.color = "#dda0dd"
+  }
+	if(memory === "&"){
+    for (let i = 1; i < memory_panel_length; i++){
+      localStorage.removeItem(`m${i}[S${currentSlide}]`);
+    } 
+  }
+  //get current memory
+  var current_memory  = 2;
+  
+  if(memory != "&" && memory != "*"){
 	if (_headerInput.value === '' && _bodyInput.value === ''){
-		//getLocalMemory()
 		
 		if(getLocalMemory){
-			getMemory(getLocalMemory)
-			_headerInput.value = getLocalMemory.header;
-			_bodyInput.value = getLocalMemory.body;
-			console.log(getMemory)
+      getMemory(getLocalMemory)
+			_headerInput.value = memo.header;
+			_bodyInput.value = memo.body;
+      memoryObj.style.color = "#f50bf5"
 		}else{
-			alert('no text!');
+			alert('No text! Add Text');
 		}
 	}else{
-		//getLocalMemory()
-		
+
 			if(getLocalMemory){
 				 getMemory(getLocalMemory)
-				_headerInput.value = getLocalMemory.header;
-				_bodyInput.value = getLocalMemory.body;
+         cslide.header.text = _headerInput.value;
+         cslide.body.text = memo.body
+         _headerInput.value = memo.header;
+         _bodyInput.value = memo.body;
+        set_slide_info_to_storage(cslide);
 			}else{
 				slide.header = _headerInput.value;
 				slide.body = _bodyInput.value;
 				setLocalMemory(slide);
 			}
-		}
-	
-	_headerInput = getLocalMemory
-	//console.log(parse_getLocalMemory)
+      memoryObj.style.color = "#f50bf5"
+      
+  }
 }
+
+if (memory === "*"){
+    console.log(current_memory)
+  }
+
+} localStorage.setItem("sdf","asdd")
 //encrypt information
 function encrypt (encrypt){
 	return window.btoa(encrypt);
@@ -427,46 +466,10 @@ function decrypt (decrypt){
 function check(){
   console.log(allSlides) 
 }
+
+
 </script>           
 
         <script src="js/powerclip.js"></script>
-  <!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
 </body>
   </html>
