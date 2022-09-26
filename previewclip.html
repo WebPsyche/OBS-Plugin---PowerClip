@@ -20,8 +20,9 @@
         color:beige;
         margin-top:-30px;
     }
-    .container, .slide{
+    .container{
         background: rgb(10, 9, 9);
+        color:white;
         width:300px;
         height:168.75px;
         position:absolute;
@@ -73,12 +74,15 @@
     }
     
      .container header{
-
+        font-size:;
+        transition: none
      }
-     .container p{
+     .container span{
         position:;
-        transform: translateY(50px);
-        font-size:3vw;
+        display: inline-block;
+        transform:translateY(10vh);
+        font-size:5vh;
+        transition:none;
      }
     
     </style>
@@ -88,7 +92,7 @@
     <p class="h1">powerclip</p>
     <div class="container">
        <header>HEADER</header>
-            <p>BODY</p>
+            <span>BODY</span>
             
     </div>
 
@@ -130,11 +134,11 @@ function setSlideHeader(slideInfo){
     part.font = info.font
     part.fontSize = info.size + "vw"
     part.textAlign = info.align
-    part.transformY = info.positionY
-    part.transformX = info.positionX
+    part.transformX = info.positionX + "vw"
+    part.transformY = info.positionY + "vh"
 }
 function setSlideBody(slideInfo){
-    var slide_body = document.querySelector(".container p")
+    var slide_body = document.querySelector(".container span")
     var part = slide_body.style
     var info = slideInfo.body
     slide_body.textContent = info.text;
@@ -143,7 +147,8 @@ function setSlideBody(slideInfo){
     part.font = info.font
     part.fontSize = info.size + "vw"
     part.textAlign = info.align
-    part.transform = `translate(${info.positionX}px,${info.positionY}px)`
+    part.transform = `translate(info.positionX + "vw")`
+    part.transform = info.positionY + "vh"
 }
 function encrypt (encrypt){
 	return window.btoa(encrypt);
