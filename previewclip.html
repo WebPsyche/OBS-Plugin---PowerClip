@@ -1,140 +1,166 @@
 <!doctype html>
+<html>
 <head>
     <title>PreviewClip</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="css/animationLibrary.css"> 
+
 <style>
     body{
-        background:black;
-        max-width: fit-content;
-        max-height: ;
+        background: rgb(14, 14, 14);
+        overflow:hidden;
+        margin-top:40px;
+        height:100%;
+        display:flex;
+        justify-content:center;
+        align-items: ;
+        position: relative;
     }
-    h1{
-        background:rgb(0,0,0);
-        margin:0;
-        color:rgb(240, 255, 255);
-        font-size: medium;
+    .h1{
+        color:beige;
+        margin-top:-30px;
+    }
+    .container, .slide{
+        background: rgb(10, 9, 9);
+        width:300px;
+        height:168.75px;
+        position:absolute;
+        bottom: ;
+        transition:;
+        transform:translate();
         text-align: center;
-        position:fixed;
-        z-index:1 ;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        display: ;
+        overflow:hidden;
     }
-    .watermark{
-        color:rgb(240, 255, 255);
+    .container hr{
         position: absolute;
-        text-align: ;
-        top:0;
-        bottom: 0;
-        width: ;
-        left: 0;
+        z-index: 1px;
+        width: 10%;
+        border:1px solid white;
+        opacity: 0.5;
+        height: 0px;
+        top:50%;
+    }
+    .container hr:nth-child(2){
         right: 0;
-        text-align: center;
-        opacity:0.4;
-        z-index:0;
-        display:inline-block;
-        font-size:calc(20vh);
-        translate:0% 25%;
-        letter-spacing:1vw;
-        outline: none;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        
-        
-
     }
+    .container hr:nth-child(3){
+        transform: rotate(90deg);
+        top:5%;
+        left:50%;
+        width:;
+    }
+    .container hr:nth-child(4){
+        transform: rotate(90deg);
+        left:50%;
+    }
+    .container hr:nth-child(5){
+            left:50%;
+    }
+    .border1,.border2{
+        background:none;
+        border:1px solid white;
+        width:95%;
+        height:90%;
+        margin:2.5%;
+        position: absolute;
+        opacity:0.5;
+    }
+    .border2{
+        width:90%;
+        height:80% ;
+        margin:5%;
+    }
+    
+     .container header{
+
+     }
+     .container p{
+        position:;
+        transform: translateY(50px);
+        font-size:3vw;
+     }
+    
     </style>
+
 </head>
-<body onload="">
-    
-    <div id="slide" class="">
-        <h1 class="slideInfo">Slide Number</h1>
-        <header>slide 1</header>
-        <p class="bodyText">Text 1</p>
-        <div id="background" class=""></div>
-        </div>
-    
-    <div id="slide" class="">
-        <h1 class="slideInfo">Slide Number</h1>
-        <header>Slide 2</header>
-        <p class="bodyText">Text 1</p>
-        <div id="background" class=""></div>
-    </div>        
-        <p class="watermark">Preview</p>
-
-
-<script>
-    const allSlides = document.querySelectorAll('#slide')
-    const slides = document.querySelector('#slide')
-    slides.style.display = "none"
-    const allSlidesBackground = document.querySelectorAll('#background')
-   
-    //slide collection
-    $allSlides = []
-    let slideInfoFromLocalStorage = JSON.parse(localStorage.getItem('allSlides'))
-   // console.log(slideInfoFromLocalStorage)
-      $allSlides = slideInfoFromLocalStorage 
-            //setProperties()
-
-    
-    
-
- 
-    //GET ALL DIVS
-    
-   window.addEventListener('storage',()=>{
-
-     slideInfoFromLocalStorage = JSON.parse(localStorage.getItem('allSlides'))
-        //console.log(slideInfoFromLocalStorage)
-      $allSlides = slideInfoFromLocalStorage 
-
-    for(let i = 0; i < allSlides.length; i++){
-        //console.log($allSlides[i])
-        //h1 for slide info and slide information
-        $slideInfo = document.querySelectorAll('.slideInfo')
-        $slideInfo[i].textContent = $allSlides[i].slideInfo.slideName
-        allSlides[i].className = $allSlides[i].slideInfo.slideAnimationClass
-        allSlides[i].style.display = $allSlides[i].slideInfo.previewDisplay
-        
-        //headers
-            $slideHeader = document.querySelectorAll('header')
-            $slideHeader[i].textContent = $allSlides[i].header.headerText
-            $slideHeader[i].style.textAlign = $allSlides[i].header.headerTextAlign  //textAlign
-            $slideHeader[i].style.fontStyle = $allSlides[i].header.headerTextItalics //text italics
-            $slideHeader[i].style.fontWeight = $allSlides[i].header.headerTextBold  //text bold
-            $slideHeader[i].style.textDecoration = $allSlides[i].header.headerTextUnderline //underline
-            $slideHeader[i].style.color = $allSlides[i].header.headerTextColor //textColor
-            $slideHeader[i].style.backgroundColor = $allSlides[i].header.headerTextBackgroundColor //textBackgroundColor
-            $slideHeader[i].style.fontFamily = $allSlides[i].header.headerFont //font
-            $slideHeader[i].style.fontSize = `${$allSlides[i].header.headerFontSize - 4}vw` //font size
-           // $slideHeader[i].style.marginLeft = $allSlides[i].header.headerPositionX +"px"// horizontal position
-            $slideHeader[i].style.translate = `${$allSlides[i].header.headerPositionX} ${$allSlides[i].header.headerPositionY}`// horizontal%vertical position
-        
-        //body
-        $slideBody = document.querySelectorAll('.bodyText')
-            $slideBody[i].textContent = $allSlides[i].body.bodyText
-            $slideBody[i].style.textAlign = $allSlides[i].body.bodyTextAlign  //textAlign
-            $slideBody[i].style.fontStyle = $allSlides[i].body.bodyTextItalics //text italics
-            $slideBody[i].style.fontWeight = $allSlides[i].body.bodyTextBold  //text bold
-            $slideBody[i].style.textDecoration = $allSlides[i].body.bodyTextUnderline //underline
-            $slideBody[i].style.color = $allSlides[i].body.bodyTextColor //textColor
-            $slideBody[i].style.backgroundColor = $allSlides[i].body.bodyTextBackgroundColor //textBackgroundColor
-            $slideBody[i].style.fontFamily = $allSlides[i].body.bodyFont //font
-            $slideBody[i].style.fontSize = `calc(${$allSlides[i].body.bodyFontSize + 'vw'} - ${$allSlides[i].body.bodyFontSize + 'vh'} )` //font size
-            $slideBody[i].style.translate = `${$allSlides[i].body.bodyPositionX} ${$allSlides[i].body.bodyPositionY}`// horizontal%vertical position
-        
-           // console.log($slideBody[i].style.marginLeft)
-        //background
-        allSlidesBackground[i].style.className = $allSlides[i].background.backgroundAnimationClass
-        allSlidesBackground[i].style.backgroundColor = $allSlides[i].background.backgroundColor
-       // allSlidesBackground[i].style.display = $allSlides[i].background.backgroundDisplay
+<body onload="perform_slide()">
+    <p class="h1">powerclip</p>
+    <div class="container">
+       <header>HEADER</header>
+            <p>BODY</p>
             
+    </div>
 
-    }
-      
-   })
 
-   
+    <script>
+//fit screen
+var window_width = window.innerWidth
+var window_height = window.innerHeight
+let s = document.querySelector('div')
+s.style.width = window.innerWidth - 20 + "px" 
+s.style.height = s.offsetWidth/(16/9) + 'px'
+window.addEventListener('resize',()=>{
+ 
+        s.style.width = window.innerWidth - 20 + "px" 
+        s.style.height = s.offsetWidth/(16/9) + 'px'
+        if(window.innerHeight != window_height){
+            
+            if (window.innerHeight < s.offsetHeight + 50){
+                s.style.height = window.innerHeight + "px"
+                s.style.width = s.offsetHeight*(16/9) + "px"
+            }
+        }
+})
 
-    </script>
-   
+// items from local storage
+function getFromLocalstorage(){
+    var memory = localStorage.getItem("setSlide")
+    var decrypted_memory = decrypt(memory)
+    var parse_memory = JSON.parse(decrypted_memory)
+   return parse_memory
+}
+function setSlideHeader(slideInfo){
+    var slide_header = document.querySelector(".container header")
+    var part = slide_header.style
+    var info = slideInfo.header
+    slide_header.textContent = info.text;
+    part.color = info.color
+    part.backgroundColor = info.backgroundColor
+    part.font = info.font
+    part.fontSize = info.size + "vw"
+    part.textAlign = info.align
+    part.transformY = info.positionY
+    part.transformX = info.positionX
+}
+function setSlideBody(slideInfo){
+    var slide_body = document.querySelector(".container p")
+    var part = slide_body.style
+    var info = slideInfo.body
+    slide_body.textContent = info.text;
+    part.color = info.color
+    part.backgroundColor = info.backgroundColor
+    part.font = info.font
+    part.fontSize = info.size + "vw"
+    part.textAlign = info.align
+    part.transform = `translate(${info.positionX}px,${info.positionY}px)`
+}
+function encrypt (encrypt){
+	return window.btoa(encrypt);
+}
+// decrypt information
+function decrypt (decrypt){
+	return window.atob(decrypt);
+}
+function perform_slide(){
+  var info =  getFromLocalstorage();
+   setSlideHeader(info);
+   setSlideBody(info);
+}
+window.addEventListener('storage', ()=>{
+   perform_slide();
+})
+
+  </script>
 </body>
 </html>

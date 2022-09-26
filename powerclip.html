@@ -51,18 +51,18 @@
                  </span>
                    <!--img icon for position-->
                    <span class="icons">
-                     <img src="icons/caret-left.svg" title="positionX" onclick="position(this,'headerPositionX+')">
+                     <img src="icons/caret-left.svg" title="positionX" onclick="position(this,'headerPositionX-')">
                      <input type="number" value="15" oninput="position(this,'headerPositionX')">
-                     <img src="icons/caret-right.svg" title="positionX" onclick="position(this,'headerPositionX-')">
+                     <img src="icons/caret-right.svg" title="positionX" onclick="position(this,'headerPositionX+')">
                    </span>
                       <span class="icons">
-                        <img src="icons/caret-up (1).svg" title="positionY" onclick="position(this,'headerPositionY+')">
+                        <img src="icons/caret-up (1).svg" title="positionY" onclick="position(this,'headerPositionY-')">
                         <input type="number" value="15" oninput="position(this,'headerPositionY')">
-                        <img src="icons/caret-down (3).svg" title="positionY" onclick="position(this,'headerPositionY-')">
+                        <img src="icons/caret-down (3).svg" title="positionY" onclick="position(this,'headerPositionY+')">
                       </span>
                          <span class="icons">
                            <img src="icons/caret-up (1).svg" title="font-size" onclick="fontSize(this,'headerFont+')">
-                           <input type="number" value="15" oninput="fontSize(this,'headerFont')">
+                           <input type="number" value="3" oninput="fontSize(this,'headerFont')">
                            <img src="icons/caret-down (3).svg" title="font-size" onclick="fontSize(this,'headerFont-')">
                          </span>
                </div>
@@ -90,18 +90,18 @@
                      </span>
                        <!--img icon for position-->
                        <span class="icons">
-                         <img src="icons/caret-left.svg" title="positionX" onclick="position(this,'bodyPositionX+')">
+                         <img src="icons/caret-left.svg" title="positionX" onclick="position(this,'bodyPositionX-')">
                          <input type="number" value="15" oninput="position(this,'bodyPositionX')">
-                         <img src="icons/caret-right.svg" title="positionX" onclick="position(this,'bodyPositionX-')">
+                         <img src="icons/caret-right.svg" title="positionX" onclick="position(this,'bodyPositionX+')">
                        </span>
                           <span class="icons">
-                            <img src="icons/caret-up (1).svg" title="positionY" onclick="position(this,'bodyPositionY+')">
+                            <img src="icons/caret-up (1).svg" title="positionY" onclick="position(this,'bodyPositionY-')">
                             <input type="number" value="15" oninput="position(this,'bodyPositionY')">
-                            <img src="icons/caret-down (3).svg" title="positionY" onclick="position(this,'bodyPositionY-')">
+                            <img src="icons/caret-down (3).svg" title="positionY" onclick="position(this,'bodyPositionY+')">
                           </span>
                              <span class="icons">
                                <img src="icons/caret-up (1).svg" title="font-size" onclick="fontSize(this,'bodyFont+')">
-                               <input type="number" value="15" oninput="fontSize(this,'bodyFont')">
+                               <input type="number" value="3" oninput="fontSize(this,'bodyFont')">
                                <img src="icons/caret-down (3).svg" title="font-size" onclick="fontSize(this,'bodyFont-')">
                              </span>
                     </div>
@@ -274,6 +274,7 @@ function select_slide(num){
   $(`.slider_name_container :nth-child(${x+1})`).show()
   $(`.slide_aside :nth-child(${x+1})`).addClass("slide_selector_active")
   currentSlide = (x + 1);
+  console.log(allSlides[currentSlide-1].header)
   set_slide_info_to_storage(allSlides[x])
 }
 //set slide to localstorage
