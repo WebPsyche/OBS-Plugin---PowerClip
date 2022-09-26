@@ -1,1 +1,2 @@
-OBS pluggin for text animation
+# OBS pluggin for text animation
+## maintaining branch
